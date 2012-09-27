@@ -1,0 +1,60 @@
+c:\users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\bin\Debug\StudentRegistrationApp.exe
+c:\users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\bin\Debug\StudentRegistrationApp.pdb
+c:\users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\bin\Debug\resources.pri
+c:\users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\bin\Debug\AppxManifest.xml
+c:\users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\bin\Debug\StudentRegistrationApp.build.appxrecipe
+c:\users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\App.g.i.cs
+c:\users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\App.g.cs
+c:\users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\Common\StandardStyles.g.i.cs
+c:\users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\Common\StandardStyles.g.cs
+c:\users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\MainPage.g.i.cs
+c:\users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\MainPage.g.cs
+c:\users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\XamlTypeInfo.g.cs
+c:\users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\App.xaml
+c:\users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\Common\StandardStyles.xaml
+c:\users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\MainPage.xaml
+c:\users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\StudentRegistrationApp.exe
+c:\users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\StudentRegistrationApp.pdb
+c:\users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\priconfig.xml
+c:\users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\layout.resfiles
+c:\users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\resources.resfiles
+c:\users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\pri.resfiles
+c:\users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\LanguageQualifiers.txt
+c:\users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\ProjectArchitectures.txt
+Z:\Projects\StudentRegistrationApp\StudentRegistrationApp\bin\Debug\StudentRegistrationApp.exe
+Z:\Projects\StudentRegistrationApp\StudentRegistrationApp\bin\Debug\StudentRegistrationApp.pdb
+Z:\Projects\StudentRegistrationApp\StudentRegistrationApp\bin\Debug\resources.pri
+Z:\Projects\StudentRegistrationApp\StudentRegistrationApp\bin\Debug\AppxManifest.xml
+Z:\Projects\StudentRegistrationApp\StudentRegistrationApp\bin\Debug\StudentRegistrationApp.build.appxrecipe
+Z:\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\App.g.i.cs
+Z:\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\App.g.cs
+Z:\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\Common\StandardStyles.g.i.cs
+Z:\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\Common\StandardStyles.g.cs
+Z:\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\MainPage.g.i.cs
+Z:\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\MainPage.g.cs
+Z:\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\StuentDisplayPage.g.i.cs
+Z:\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\StuentDisplayPage.g.cs
+Z:\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\XamlTypeInfo.g.cs
+Z:\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\App.xaml
+Z:\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\Common\StandardStyles.xaml
+Z:\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\MainPage.xaml
+Z:\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\StuentDisplayPage.xaml
+Z:\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\StudentRegistrationApp.exe
+Z:\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\StudentRegistrationApp.pdb
+Z:\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\priconfig.xml.intermediate
+Z:\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\layout.resfiles.intermediate
+Z:\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\resources.resfiles.intermediate
+Z:\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\pri.resfiles.intermediate
+Z:\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\priconfig.xml
+Z:\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\layout.resfiles
+Z:\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\resources.resfiles
+Z:\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\pri.resfiles
+Z:\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\LanguageQualifiers.txt
+Z:\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\ProjectArchitectures.txt
+C:\Users\student\Documents\Visual Studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\StudentDisplayPage.g.i.cs
+C:\Users\student\Documents\Visual Studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\StudentDisplayPage.g.cs
+C:\Users\student\Documents\Visual Studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\StudentDisplayPage.xaml
+C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\priconfig.xml.intermediate
+C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\layout.resfiles.intermediate
+C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\resources.resfiles.intermediate
+C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\pri.resfiles.intermediate
