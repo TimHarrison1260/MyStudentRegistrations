@@ -106,7 +106,13 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BusinessEntities\Address.cs" />
+    <Compile Include="BusinessEntities\ContactDetail.cs" />
+    <Compile Include="BusinessEntities\ValidationExceptions.cs" />
+    <Compile Include="BusinessEntities\YearOfStudy.cs" />
+    <Compile Include="BusinessLayer\Helpers.cs" />
     <Compile Include="BusinessLayer\IStudentBLL.cs" />
+    <Compile Include="BusinessEntities\Student.cs" />
     <Compile Include="BusinessLayer\StudentBLL.cs" />
     <Compile Include="Common\BindableBase.cs" />
     <Compile Include="Common\BooleanNegationConverter.cs" />

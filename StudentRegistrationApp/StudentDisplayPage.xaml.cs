@@ -65,17 +65,17 @@ namespace StudentRegistrationApp
 
             BusinessLayer.IStudentBLL BLL = new BusinessLayer.StudentBLL((App.Current as App).GetRepository());
 
-            Model.Student student = (Model.Student)e.Parameter;
+            BusinessEntities.Student student = (BusinessEntities.Student)e.Parameter;
 
             if (student != null)
             {
                 //  We do this here, not because we have the full student record we need, but because
                 //  eventually we'll be passing an Id instead of the student itself, so the logic is 
                 //  right for now.
-                Model.Student result = BLL.GetStudent(student.Firstname, student.Surname);
+                BusinessEntities.Student result = BLL.GetStudent(student.Firstname, student.Surname);
 
                 //  Now move the results to the fields.
-                RefreshUI(student);
+                RefreshUI(result);
             }
             else
             {
@@ -115,7 +115,7 @@ namespace StudentRegistrationApp
 
 
 
-        private void RefreshUI(Model.Student student)
+        private void RefreshUI(BusinessEntities.Student student)
         {
             this.txtFirstName.Text = student.Firstname;
             this.txtSurname.Text = student.Surname;

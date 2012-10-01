@@ -1,2 +1,2 @@
-C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\StudentRegistrationApp.csproj;neutral
-C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationUnitTests\StudentRegistrationUnitTests.csproj;neutral
+C:\Users\student\Documents\Visual Studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\StudentRegistrationApp.csproj;neutral
+C:\Users\student\Documents\Visual Studio 2012\Projects\StudentRegistrationApp\StudentRegistrationUnitTests\StudentRegistrationUnitTests.csproj;neutral

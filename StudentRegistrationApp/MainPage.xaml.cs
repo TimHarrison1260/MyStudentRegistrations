@@ -12,6 +12,8 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
+using StudentRegistrationApp.BusinessEntities;
+
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234237
 
 namespace StudentRegistrationApp
@@ -22,7 +24,7 @@ namespace StudentRegistrationApp
     public sealed partial class MainPage : StudentRegistrationApp.Common.LayoutAwarePage
     {
         //  An instance of a Student for the form to use and to pass to the display page.
-        Model.Student student;
+        BusinessEntities.Student student;
 
         public MainPage()
         {
@@ -84,39 +86,28 @@ namespace StudentRegistrationApp
             //  Place code here to register the Student
             //  Instantiate the Business Layer to process the input.
             BusinessLayer.IStudentBLL BLL = new BusinessLayer.StudentBLL((App.Current as App).GetRepository());
-            
-            //  Create Student record
-            student = new Model.Student();
 
-            student.Firstname = this.txtFirstNameInput.Text;
-            student.Surname = this.txtSurnameInput.Text;
-//            student.DOB = this.txtDoBInput.Text;
-            student.Course = this.txtCourseTitleInput.Text;
-            student.YearOfStudy = (Model.YearOfStudyEnum) this.cbYearOfStudyInput.SelectedValue;
+            try
+            {
+                GetFormValues();
 
-            student.Address = new Model.Address();
-            student.Address.Address1 = this.txtAddressInput.Text;
-            student.Address.Town = this.txtTownInput.Text;
-            student.Address.County = this.txtCountyInput.Text;
-            student.Address.PostCode = this.txtPostCodeInput.Text;
+                //  Add the student record to the datastore (Student Repository)
+                BLL.AddStudent(student);
 
-            student.Contact = new Model.ContactDetail();
-            student.Contact.HomePhone = this.txtPhoneHomeInput.Text;
-            student.Contact.MobilePhone = this.txtPhoneMobileInput.Text;
-            student.Contact.HomeEmail = this.txtEmailHomeInput.Text;
-            student.Contact.StudentEmail = this.txtEmailStudentInput.Text;
+                //  Reset the panel to accept a new Student entry
+                this.ResetForm();
 
-            //  Add the student record to the datastore (Student Repository)
-            BLL.AddStudent(student);
-
-            //  Set the record just added to the current display item.
-
-            //  Reset the panel to accept a new student entry
-            this.ResetForm();
-
-            //  Set confirmation message.
-            this.lblConfirmMsg.Text = string.Format("{0} {1} has been added as a student", student.Firstname, student.Surname);
-
+                //  Set confirmation message.
+                this.lblConfirmMsg.Text = string.Format("{0} {1} has been added as a student", student.Firstname, student.Surname);
+            }
+            catch (RequiredDetailsNotEnteredException eNoData)
+            {
+                this.lblErrorMessage.Text = eNoData.Message;
+            }
+            catch (DateOfBirthException eDob)
+            {
+                this.lblErrorMessage.Text = eDob.Message;
+            }
         }
 
 
@@ -139,16 +130,43 @@ namespace StudentRegistrationApp
             this.txtCountyInput.Text = string.Empty;
             this.txtPostCodeInput.Text = string.Empty;
 
-            //this.YearOfStudyInput.SelectedItem = Enum.GetName(typeof(Model.YearOfStudyEnum),Model.YearOfStudyEnum.First);
-            //  It seems we cant set the selected item, or at least its not working for me at the moment.
-            //var thisValue = Enum.ToObject(typeof(Model.YearOfStudyEnum), 1);
-            //this.YearOfStudyInput.SelectedItem = thisValue;
-            //  However, setting the selectedindex does work so we'll leave it at this for the moment, until I know better.
             this.cbYearOfStudyInput.SelectedIndex = 0;
             this.txtPhoneHomeInput.Text = string.Empty;
             this.txtPhoneMobileInput.Text = string.Empty;
             this.txtEmailHomeInput.Text = string.Empty;
             this.txtEmailStudentInput.Text = string.Empty;
         }
+
+        private void GetFormValues()
+        {
+            //  Create Student record
+            student = new BusinessEntities.Student();
+
+            student.Firstname = this.txtFirstNameInput.Text;
+            student.Surname = this.txtSurnameInput.Text;
+            student.DOB = this.txtDoBInput.Text;
+            student.Course = this.txtCourseTitleInput.Text;
+            if (cbYearOfStudyInput.SelectedValue == null)
+            {
+                student.YearOfStudy = BusinessEntities.YearOfStudyEnum.First;
+            }
+            else
+            {
+                student.YearOfStudy = (BusinessEntities.YearOfStudyEnum)this.cbYearOfStudyInput.SelectedValue;
+            }
+
+            student.Address = new BusinessEntities.Address();
+            student.Address.Address1 = this.txtAddressInput.Text;
+            student.Address.Town = this.txtTownInput.Text;
+            student.Address.County = this.txtCountyInput.Text;
+            student.Address.PostCode = this.txtPostCodeInput.Text;
+
+            student.Contact = new BusinessEntities.ContactDetail();
+            student.Contact.HomePhone = this.txtPhoneHomeInput.Text;
+            student.Contact.MobilePhone = this.txtPhoneMobileInput.Text;
+            student.Contact.HomeEmail = this.txtEmailHomeInput.Text;
+            student.Contact.StudentEmail = this.txtEmailStudentInput.Text;
+        }
+
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 
 
-namespace StudentRegistrationApp.Model
+namespace StudentRegistrationApp.BusinessEntities
 {
     /// <summary>
     /// Class <c>Student</c> represents the information about
@@ -14,26 +14,74 @@ namespace StudentRegistrationApp.Model
     /// </summary>
     public class Student : IEquatable<Student>
     {
-        private string _FirstName;
+        private string _firstName;
+        private string _surname;
+        private DateTime _dob;
 
         /// <summary>
         /// Gets or Sets the Name of the Student
         /// </summary>
-        [Required(ErrorMessage="Student Name cannot be blank.  Please enter a valid Firstname.")]
-        public string Firstname { get; set;}
+        public string Firstname 
+        { 
+            get
+            {
+                return _firstName;
+            } 
+            set
+            {
+                if (value == null|| value == string.Empty)
+                    throw new RequiredDetailsNotEnteredException("Firstname is a required field, please enter a value.");
+                else
+                    _firstName = value;
+            } 
+        }
 
         /// <summary>
         /// Gets or sets the Surname of the Student
         /// </summary>
         [Required(ErrorMessage="Student Surname cannot be blank.  Please enter a valid name.")]
-        public string Surname { get; set; }
+        public string Surname 
+        {
+            get
+            {
+                return _surname;
+            }
+            set
+            {
+                if (value == null || value == string.Empty)
+                    throw new RequiredDetailsNotEnteredException("'Surname' is a required field, please enter a valid value.");
+                else
+                    _surname = value;
+            }
+        }
 
         /// <summary>
         /// Gets or Sets the Date of Birth of the Student
         /// </summary>
         [Required(ErrorMessage="Date of Birth is a required value.  Please enter a valid date")]
         [DataType(DataType.DateTime, ErrorMessage="Entered value is not a date, please enter a valid date")]
-        public DateTime DOB { get; set; }
+        public string DOB 
+        {
+            get
+            {
+                return _dob.ToString();
+            }
+            set
+            {
+                if (value == null)
+                    throw new RequiredDetailsNotEnteredException("'Date of Birth' is a required field, please enter a valid date.");
+
+                DateTime tempDOB;
+                if (!DateTime.TryParse(value, out tempDOB))
+                    throw new DateOfBirthException("Value entered as 'Date of Birth' is not a date.  Please enter a valid value");
+
+                DateTime sixteenYearsOld = DateTime.Now.AddYears(-16);
+                if (tempDOB > sixteenYearsOld)
+                    throw new DateOfBirthException("Student must be at least 16 years of age.  Please try next year or enter correct date of birth");
+
+                _dob = tempDOB;
+            }
+        }
 
         /// <summary>
         /// Gets or sets the <see cref="Address"/>Address of the Student.
@@ -75,5 +123,6 @@ namespace StudentRegistrationApp.Model
                 this.Surname == other.Surname &&
                 this.DOB == other.DOB);
         }
+
     }
 }

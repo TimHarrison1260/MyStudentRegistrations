@@ -46,10 +46,10 @@
         <StackPanel Margin="60,10,0,0" Grid.Row="2" Width="1116" Height="487" HorizontalAlignment="Left" Orientation="Horizontal" VerticalAlignment="Top">
             <Grid x:Name="StudentEntry" Width="1101" VerticalAlignment="Top" Height="477">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="204*"/>
-                    <RowDefinition Height="56*"/>
-                    <RowDefinition Height="169*"/>
                     <!--<RowDefinition Height="48*"/>-->
+                    <RowDefinition Height="239*"/>
+                    <RowDefinition Height="50*"/>
+                    <RowDefinition Height="188*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="185*"/>
@@ -83,8 +83,9 @@
                 <TextBlock x:Name="lblHomePhone1" HorizontalAlignment="Left" Margin="22,22,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Phone - Home" VerticalAlignment="Top" Width="205" Style="{StaticResource ItemLabelStyle}" Height="20" Grid.Column="2" FlowDirection="RightToLeft"/>
                 <TextBlock x:Name="lblFirstName" HorizontalAlignment="Left" Margin="15,59,0,125" TextWrapping="Wrap" Text="First Names" Width="151" Style="{StaticResource ItemLabelStyle}"/>
                 <TextBlock x:Name="lblCourseTitle" HorizontalAlignment="Left" Margin="15,133,0,0" TextWrapping="Wrap" Text="Course Title" VerticalAlignment="Top" Height="20" Width="151" Style="{StaticResource ItemLabelStyle}"/>
-                <TextBlock HorizontalAlignment="Left" Margin="15,26,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Address" VerticalAlignment="Top" Style="{StaticResource ItemLabelStyle}"/>
-                <TextBlock Grid.Column="2" HorizontalAlignment="Left" Margin="22,26,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Contact" VerticalAlignment="Top" Style="{StaticResource ItemLabelStyle}"/>
+                <TextBlock HorizontalAlignment="Left" Margin="15,26,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Address" VerticalAlignment="Top" Style="{StaticResource ItemLabelStyle}" Height="20" Width="91"/>
+                <TextBlock Grid.Column="2" HorizontalAlignment="Left" Margin="22,26,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Contact" VerticalAlignment="Top" Style="{StaticResource ItemLabelStyle}" Height="20" Width="88"/>
+                <TextBlock x:Name="lblErrorMessage" Grid.Column="1" HorizontalAlignment="Left" Margin="16,195,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Style="{StaticResource ErrorMessageStyle}" Grid.ColumnSpan="3" Width="886"/>
             </Grid>
         </StackPanel>
         <TextBlock x:Name="lblConfirmMsg" HorizontalAlignment="Left" Margin="546,19,0,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" Style="{StaticResource ConfirmMessageStyle}"/>

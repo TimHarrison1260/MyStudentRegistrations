@@ -8,15 +8,15 @@ namespace StudentRegistrationApp.BusinessLayer
 {
     public interface IStudentBLL
     {
-        List<Model.Student> GetStudents();
+        List<BusinessEntities.Student> GetStudents();
 
-        void AddStudent(Model.Student student);
+        void AddStudent(BusinessEntities.Student student);
 
-        Model.Student GetStudent(string Firstname, string Surname);
+        BusinessEntities.Student GetStudent(string Firstname, string Surname);
 
-        Model.Student FirstStudent();
-        Model.Student LastStudent();
-        Model.Student NextStudent();
-        Model.Student PreviousStudent();
+        BusinessEntities.Student FirstStudent();
+        BusinessEntities.Student LastStudent();
+        BusinessEntities.Student NextStudent();
+        BusinessEntities.Student PreviousStudent();
     }
 }

@@ -54,7 +54,3 @@ Z:\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\ProjectArchi
 C:\Users\student\Documents\Visual Studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\StudentDisplayPage.g.i.cs
 C:\Users\student\Documents\Visual Studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\StudentDisplayPage.g.cs
 C:\Users\student\Documents\Visual Studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\StudentDisplayPage.xaml
-C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\priconfig.xml.intermediate
-C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\layout.resfiles.intermediate
-C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\resources.resfiles.intermediate
-C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\pri.resfiles.intermediate

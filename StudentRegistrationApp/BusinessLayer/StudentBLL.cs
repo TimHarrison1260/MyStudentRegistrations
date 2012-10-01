@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using StudentRegistrationApp.Model;
+
 namespace StudentRegistrationApp.BusinessLayer
 {
 
@@ -11,6 +13,10 @@ namespace StudentRegistrationApp.BusinessLayer
     {
         private Model.IRepository _repository;
 
+        /// <summary>
+        /// Constructor to inject the instance of the repository
+        /// </summary>
+        /// <param name="repository"></param>
         public StudentBLL(Model.IRepository repository)
         {
             if (repository == null)
@@ -18,40 +24,52 @@ namespace StudentRegistrationApp.BusinessLayer
             _repository = repository;
         }
 
-        public List<Model.Student> GetStudents()
+        public List<BusinessEntities.Student> GetStudents()
         {
-            return _repository.GetStudents();
+            List<BusinessEntities.Student> students = new List<BusinessEntities.Student>();
+            Helpers helper = new Helpers();
+            foreach (var student in _repository.GetStudents())
+            {
+                students.Add(helper.ToBusinessEntity(student));
+            }
+            return students;
         }
 
-
-        public void AddStudent(Model.Student student)
+        
+        public void AddStudent(BusinessEntities.Student student)
         {
-            _repository.AddStudent(student);
+            Helpers helper = new Helpers();
+            _repository.AddStudent(helper.ToModel(student));
         }
 
-        public Model.Student GetStudent(string Firstname, string Surname)
+        public BusinessEntities.Student GetStudent(string Firstname, string Surname)
         {
-            return _repository.GetStudent(Firstname, Surname);
+            Helpers helper = new Helpers();
+            return helper.ToBusinessEntity(_repository.GetStudent(Firstname, Surname));
         }
 
-        public Model.Student FirstStudent()
+        public BusinessEntities.Student FirstStudent()
         {
-            return _repository.FirstStudent();
+            Helpers helper = new Helpers();
+            return helper.ToBusinessEntity(_repository.FirstStudent());
         }
 
-        public Model.Student LastStudent()
+        public BusinessEntities.Student LastStudent()
         {
-            return _repository.LastStudent();
+            Helpers helper = new Helpers();
+            return helper.ToBusinessEntity( _repository.LastStudent());
         }
 
-        public Model.Student NextStudent()
+        public BusinessEntities.Student NextStudent()
         {
-            return _repository.NextStudent();
+            Helpers helper = new Helpers();
+            return helper.ToBusinessEntity(_repository.NextStudent());
         }
 
-        public Model.Student PreviousStudent()
+        public BusinessEntities.Student PreviousStudent()
         {
-            return _repository.PreviousStudent();
+            Helpers helper = new Helpers();
+            return helper.ToBusinessEntity(_repository.PreviousStudent());
         }
 
     }

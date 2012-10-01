@@ -41,9 +41,9 @@
         <StackPanel Margin="60,10,0,0" Grid.Row="2" Width="1116" Height="487" HorizontalAlignment="Left" Orientation="Horizontal" VerticalAlignment="Top">
             <Grid x:Name="StudentEntry" Width="1101" VerticalAlignment="Top" Height="477">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="200*"/>
-                    <RowDefinition Height="55*"/>
-                    <RowDefinition Height="213*"/>
+                    <RowDefinition Height="211*"/>
+                    <RowDefinition Height="49*"/>
+                    <RowDefinition Height="217*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="185*"/>
