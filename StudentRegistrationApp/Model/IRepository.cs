@@ -41,6 +41,8 @@ namespace StudentRegistrationApp.Model
         /// <returns>The student corresponing to the id.</returns>
         Student GetStudent(string Firstname, string Surname);
 
+        Student GetStudentById(long id);
+
         /// <summary>
         /// Returns a list of students that match the search string.
         /// The search string is contained in either the FirstName

@@ -11,9 +11,12 @@ namespace StudentRegistrationApp.BusinessLayer
         List<BusinessEntities.Student> GetStudents();
 
         void AddStudent(BusinessEntities.Student student);
+        void UpdateStudent(BusinessEntities.Student student);
+        void DeleteStudent(BusinessEntities.Student student);
 
         BusinessEntities.Student GetStudent(string Firstname, string Surname);
-
+        BusinessEntities.Student GetStudentById(long id);
+        
         BusinessEntities.Student FirstStudent();
         BusinessEntities.Student LastStudent();
         BusinessEntities.Student NextStudent();

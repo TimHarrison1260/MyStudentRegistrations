@@ -83,11 +83,11 @@
         </StackPanel>
         <TextBlock HorizontalAlignment="Left" Margin="69,7,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Browse the list of Registered Students using the buttons below" Style="{StaticResource GroupHeaderTextStyle}" VerticalAlignment="Top" Height="30" Width="804"/>
         <Button x:Name="btnFirst" Content="|&lt; First" HorizontalAlignment="Left" Margin="60,10,0,0" Grid.Row="3" VerticalAlignment="Top" Height="38" Width="90" Click="btfFirst_Click"/>
-        <Button x:Name="btn_Edit" Content="Edit" HorizontalAlignment="Left" Margin="625,10,0,0" Grid.Row="3" VerticalAlignment="Top" Height="38" Width="90"/>
+        <Button x:Name="btn_Edit" Content="Edit" HorizontalAlignment="Left" Margin="625,10,0,0" Grid.Row="3" VerticalAlignment="Top" Height="38" Width="90" Click="Edit_Click"/>
         <Button x:Name="btnBack" Content="&lt;&lt; Back" HorizontalAlignment="Left" Margin="155,10,0,0" Grid.Row="3" VerticalAlignment="Top" Click="btnBack_Click"/>
         <Button x:Name="btnNext" Content="Next &gt;&gt;" HorizontalAlignment="Left" Margin="250,10,0,0" Grid.Row="3" VerticalAlignment="Top" Height="38" Width="90" Click="btnNext_Click"/>
         <Button x:Name="btnLast" Content="Last &gt;|" HorizontalAlignment="Left" Margin="345,10,0,0" Grid.Row="3" VerticalAlignment="Top" Height="38" Width="90" Click="btnLast_Click"/>
-        <Button x:Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="722,10,0,0" Grid.Row="3" VerticalAlignment="Top" Height="38" Width="90"/>
+        <Button x:Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="722,10,0,0" Grid.Row="3" VerticalAlignment="Top" Height="38" Width="90" Click="btnDeleteClick"/>
         <Button x:Name="btnSearch" Content="Search..." HorizontalAlignment="Left" Margin="485,10,0,0" Grid.Row="3" VerticalAlignment="Top"/>
 
         <VisualStateManager.VisualStateGroups>

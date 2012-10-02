@@ -12,6 +12,8 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
+using Windows.UI.Popups;
+
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234237
 
 namespace StudentRegistrationApp
@@ -21,6 +23,8 @@ namespace StudentRegistrationApp
     /// </summary>
     public sealed partial class StudentDisplayPage : StudentRegistrationApp.Common.LayoutAwarePage
     {
+        long currentDisplayId = 0;
+
         public StudentDisplayPage()
         {
             this.InitializeComponent();
@@ -117,6 +121,11 @@ namespace StudentRegistrationApp
 
         private void RefreshUI(BusinessEntities.Student student)
         {
+
+            //  Preserve Id of current Item being displayed
+            currentDisplayId = student.Id;
+
+            //  refresh the UI components with the student data.
             this.txtFirstName.Text = student.Firstname;
             this.txtSurname.Text = student.Surname;
             this.txtDoB.Text = student.DOB.ToString();
@@ -134,7 +143,33 @@ namespace StudentRegistrationApp
             this.txtEmailStudent.Text = student.Contact.StudentEmail;
         }
 
+        private void Edit_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.Frame != null)
+            {
+                //  Navigate to the main page and take the tudent currently displayed
+                //  The current student details are displayed and therefore available,
+                //  however, we only need to take the FirstName and Surname across as
+                //  the mainpage can find the appropriate record.
+                this.Frame.Navigate(typeof(MainPage), currentDisplayId);
 
+            }
+        }
+
+        private void btnDeleteClick(object sender, RoutedEventArgs e)
+        {
+            var messageDialog = new Windows.UI.Popups.MessageDialog("Are you sure you want to delete this Student Record?");
+            messageDialog.Commands.Add(new UICommand("Yes", (command) => {
+                BusinessLayer.IStudentBLL BLL = new BusinessLayer.StudentBLL((App.Current as App).GetRepository());
+                var studentToDelete = BLL.GetStudentById(currentDisplayId);
+                BLL.DeleteStudent(studentToDelete);
+                var student = BLL.PreviousStudent();
+                RefreshUI(student);
+            }));
+            messageDialog.Commands.Add(new UICommand("No", (command) => {}));
+            messageDialog.DefaultCommandIndex = 1;
+            messageDialog.ShowAsync();
+        }
 
     }
 }

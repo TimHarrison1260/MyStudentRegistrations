@@ -21,6 +21,7 @@ namespace StudentRegistrationApp.BusinessLayer
         {
             BusinessEntities.Student businessStudent = new BusinessEntities.Student();
 
+            businessStudent.Id = modelStudent.Id;
             businessStudent.Firstname = modelStudent.Firstname;
             businessStudent.Surname = modelStudent.Surname;
             businessStudent.DOB = modelStudent.DOB.ToString();
@@ -53,6 +54,7 @@ namespace StudentRegistrationApp.BusinessLayer
         {
             Model.Student modelStudent = new Model.Student();
 
+            modelStudent.Id = businessStudent.Id;
             modelStudent.Firstname = businessStudent.Firstname;
             modelStudent.Surname = businessStudent.Surname;
             modelStudent.DOB = DateTime.Parse(businessStudent.DOB);

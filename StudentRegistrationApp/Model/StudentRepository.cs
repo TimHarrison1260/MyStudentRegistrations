@@ -28,7 +28,7 @@ namespace StudentRegistrationApp.Model
                 Firstname = "Tim",
                 Surname = "Harrison",
                 DOB = new DateTime(1960, 02, 01),
-                Address = new Address() { Address1 = "Cauldstanes", Town = "Fenwick", County = "Ayrshire", PostCode = "KA3 9EE" },
+                Address = new Address() { Address1 = "Cauldstanes", Town = "Farnham", County = "Aberdeenshire", PostCode = "ZZ4 9EE" },
                 Course = "MSc Web Development",
                 YearOfStudy = YearOfStudyEnum.Second,
                 Contact = new ContactDetail() { HomePhone = "", MobilePhone = "", HomeEmail = "", StudentEmail = "" }
@@ -40,7 +40,7 @@ namespace StudentRegistrationApp.Model
                 Firstname="Nancy",
                 Surname="Harrison",
                 DOB=new DateTime(1955,09,27),
-                Address = new Address() {Address1="Cauldstanes", Town="Fenwick", County="Ayrshire", PostCode="KA3 9EE"}, 
+                Address = new Address() {Address1="Cauldstanes", Town="Farnham", County="Aberdeenshire", PostCode="ZZ4 9EE"}, 
                 Course="Database Administration",
                 YearOfStudy=YearOfStudyEnum.First,
                 Contact = new ContactDetail() { HomePhone = "", MobilePhone = "", HomeEmail = "", StudentEmail = "" }
@@ -54,6 +54,8 @@ namespace StudentRegistrationApp.Model
         /// <param name="student">The student to be added</param>
         public void AddStudent (Student student) 
         {
+            long nameHash = (student.Firstname + student.Surname).GetHashCode();
+
             db.Add(student);
         }
 
@@ -121,6 +123,16 @@ namespace StudentRegistrationApp.Model
                            select s).FirstOrDefault();
             return student;
 
+        }
+
+        public Student GetStudentById(long id)
+        {
+            if (id == 0) return null;
+
+            var student = (from s in db
+                           where s.Id == id
+                           select s).FirstOrDefault();
+            return student;
         }
 
         /// <summary>

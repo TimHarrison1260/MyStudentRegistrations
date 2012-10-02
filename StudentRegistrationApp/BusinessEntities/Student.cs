@@ -12,11 +12,18 @@ namespace StudentRegistrationApp.BusinessEntities
     /// Class <c>Student</c> represents the information about
     /// a student in the Registration system.
     /// </summary>
+    
     public class Student : IEquatable<Student>
     {
         private string _firstName;
         private string _surname;
         private DateTime _dob;
+
+        /// <summary>
+        /// Gets or sets the Id of the student.
+        /// </summary>
+        public long Id { get; set; }
+
 
         /// <summary>
         /// Gets or Sets the Name of the Student

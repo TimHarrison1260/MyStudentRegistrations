@@ -25,6 +25,7 @@ namespace StudentRegistrationApp
     {
         //  An instance of a Student for the form to use and to pass to the display page.
         BusinessEntities.Student student;
+        long currentStudentId = 0;
 
         public MainPage()
         {
@@ -62,6 +63,31 @@ namespace StudentRegistrationApp
         {
         }
 
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            //  Instantiate the business layer and inject the repository.
+            BusinessLayer.IStudentBLL BLL = new BusinessLayer.StudentBLL((App.Current as App).GetRepository());
+            //  Get the student Id passed as the parameter.
+            long parameterId = 0;
+            if (e.Parameter != null && e.Parameter != string.Empty)
+            {
+                parameterId = (long)e.Parameter;
+                //  Get the student record
+                student = BLL.GetStudentById(parameterId);
+            }
+
+            if (student != null)
+            {
+                //  Set the form values to display the student record.
+                SetFormValues();
+                //  Set the button descriptions to Save and Cancel, make the Cancel button visible.
+                this.RegisterStudent.Content = "Save";
+            }
+        }
+
+
         /// <summary>
         /// Handles the displayRegisteredStudents button Click event.
         /// </summary>
@@ -86,19 +112,31 @@ namespace StudentRegistrationApp
             //  Place code here to register the Student
             //  Instantiate the Business Layer to process the input.
             BusinessLayer.IStudentBLL BLL = new BusinessLayer.StudentBLL((App.Current as App).GetRepository());
+            string msg = string.Empty;
 
             try
             {
                 GetFormValues();
 
-                //  Add the student record to the datastore (Student Repository)
-                BLL.AddStudent(student);
+                //  If the key field in Student is 0, we're adding a new student, otherwise we're editing a student
+                if (student.Id == 0)
+                {
+                    //  Add the student record to the datastore (Student Repository)
+                    BLL.AddStudent(student);
+                    msg = string.Format("{0} {1} has been added as a student", student.Firstname, student.Surname);
+                }
+                else
+                {
+                    //  Update the student.
+                    BLL.UpdateStudent(student);
+                    msg = string.Format("{0} {1} has been Updated.", student.Firstname, student.Surname);
+                }
 
                 //  Reset the panel to accept a new Student entry
                 this.ResetForm();
 
                 //  Set confirmation message.
-                this.lblConfirmMsg.Text = string.Format("{0} {1} has been added as a student", student.Firstname, student.Surname);
+                this.lblConfirmMsg.Text = msg;
             }
             catch (RequiredDetailsNotEnteredException eNoData)
             {
@@ -135,13 +173,37 @@ namespace StudentRegistrationApp
             this.txtPhoneMobileInput.Text = string.Empty;
             this.txtEmailHomeInput.Text = string.Empty;
             this.txtEmailStudentInput.Text = string.Empty;
+
+            this.currentStudentId = 0;
         }
+
+        private void SetFormValues()
+        {
+            this.txtFirstNameInput.Text = student.Firstname;
+            this.txtSurnameInput.Text = student.Surname;
+            this.txtDoBInput.Text = student.DOB.ToString();
+            this.txtCourseTitleInput.Text = student.Course;
+            this.txtAddressInput.Text = student.Address.Address1;
+            this.txtTownInput.Text = student.Address.Town;
+            this.txtCountyInput.Text = student.Address.County;
+            this.txtPostCodeInput.Text = student.Address.PostCode;
+
+            this.cbYearOfStudyInput.SelectedIndex = ((int)student.YearOfStudy - 1);
+            this.txtPhoneHomeInput.Text = student.Contact.HomePhone;
+            this.txtPhoneMobileInput.Text = student.Contact.MobilePhone;
+            this.txtEmailHomeInput.Text = student.Contact.HomeEmail;
+            this.txtEmailStudentInput.Text = student.Contact.StudentEmail;
+
+            this.currentStudentId = student.Id;
+        }
+
 
         private void GetFormValues()
         {
-            //  Create Student record
-            student = new BusinessEntities.Student();
-
+            //  create a new instance of a Student record if it's not already loaded
+            //  ie. we're in Add new student mode and not edit student mode.
+            if (currentStudentId == 0) student = new Student();
+            //  load Student record from onscreen values
             student.Firstname = this.txtFirstNameInput.Text;
             student.Surname = this.txtSurnameInput.Text;
             student.DOB = this.txtDoBInput.Text;

@@ -1840,6 +1840,7 @@
     <Style x:Key="ErrorMessageStyle" TargetType="TextBlock" BasedOn="{StaticResource BaselineTextStyle}">
         <Setter Property="FontWeight" Value="Bold"/>
         <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Foreground" Value="Red"/>
     </Style>
     
 </ResourceDictionary>

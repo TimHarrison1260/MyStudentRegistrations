@@ -42,10 +42,30 @@ namespace StudentRegistrationApp.BusinessLayer
             _repository.AddStudent(helper.ToModel(student));
         }
 
+        public void UpdateStudent(BusinessEntities.Student student)
+        {
+            Helpers helper = new Helpers();
+            _repository.UpdateStudent(helper.ToModel(student));
+        }
+
+
+        public void DeleteStudent(BusinessEntities.Student student)
+        {
+            Helpers helper = new Helpers();
+            _repository.DeleteStudent(helper.ToModel(student));
+        }
+
+
         public BusinessEntities.Student GetStudent(string Firstname, string Surname)
         {
             Helpers helper = new Helpers();
             return helper.ToBusinessEntity(_repository.GetStudent(Firstname, Surname));
+        }
+
+        public BusinessEntities.Student GetStudentById(long id)
+        {
+            Helpers helper = new Helpers();
+            return helper.ToBusinessEntity(_repository.GetStudentById(id));
         }
 
         public BusinessEntities.Student FirstStudent()

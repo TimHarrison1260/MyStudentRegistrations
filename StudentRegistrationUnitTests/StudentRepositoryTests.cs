@@ -124,6 +124,31 @@ namespace StudentRegistrationUnitTests
             Assert.AreEqual(result[0].YearOfStudy, StudentRegistrationApp.Model.YearOfStudyEnum.Third);
         }
 
+
+        [TestMethod]
+        public void UpdateStudentTimNameChangeWhichShouldFail()
+        {
+            //  Arrange;
+            var db = new StudentRegistrationApp.Model.StudentRepository();
+
+            var student = new StudentRegistrationApp.Model.Student()
+            {
+                Firstname = "Tim Peter",
+                Surname = "Harrison",
+                DOB = new DateTime(1960, 2, 1),
+                YearOfStudy = StudentRegistrationApp.Model.YearOfStudyEnum.Third
+            };
+            //  Act:
+            db.UpdateStudent(student);
+
+            //  Assert: Tim is still at second year, as the update should've failed.
+            var result = db.SearchStudents("Tim");
+
+            Assert.AreEqual(result.Count(), 1);
+            Assert.AreEqual(result[0].YearOfStudy, StudentRegistrationApp.Model.YearOfStudyEnum.Second);
+        }
+
+
         [TestMethod]
         public void UpdateStudentFredDoesNotExist()
         {
@@ -262,6 +287,33 @@ namespace StudentRegistrationUnitTests
             var result = db.PreviousStudent();      // should move back to firstitem.
             //  Assert: We should be on the 2nd item, i.e. the last item.
             Assert.AreEqual(positionAtStart,result);
+        }
+
+
+        [TestMethod]
+        public void GetLastStudentById()
+        {
+            //  Arrange:
+            var db = new StudentRegistrationApp.Model.StudentRepository();
+            //  Act:
+            var lastResult = db.LastStudent();
+            long lastId = lastResult.Id;
+            var result = db.GetStudentById(lastId);
+            //  Assert:
+            Assert.AreEqual(result, lastResult, "Should get the last record");
+        }
+
+
+        [TestMethod]
+        public void GetStudentByIdNotFound()
+        {
+            var db = new StudentRegistrationApp.Model.StudentRepository();
+            //  Act:
+            var lastResult = db.LastStudent();
+            long lastId = lastResult.Id + 1;
+            var result = db.GetStudentById(lastId);
+            //  Assert:
+            Assert.IsNull(result, "Should not find the id.");
         }
     }
 }
