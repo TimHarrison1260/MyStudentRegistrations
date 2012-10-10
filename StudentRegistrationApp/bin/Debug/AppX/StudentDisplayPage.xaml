@@ -35,7 +35,7 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button x:ConnectionId='7' x:Name="backButton"                IsEnabled="{Binding Frame.CanGoBack, ElementName=pageRoot}" Style="{StaticResource BackButtonStyle}"/>
+            <Button x:ConnectionId='8' x:Name="backButton"                IsEnabled="{Binding Frame.CanGoBack, ElementName=pageRoot}" Style="{StaticResource BackButtonStyle}"/>
             <TextBlock x:Name="pageTitle" Grid.Column="1" Style="{StaticResource PageHeaderTextStyle}" Text="Registered Students List"/>
         </Grid>
         <StackPanel Margin="60,10,0,0" Grid.Row="2" Width="1116" Height="487" HorizontalAlignment="Left" Orientation="Horizontal" VerticalAlignment="Top">
@@ -88,7 +88,7 @@
         <Button x:ConnectionId='4' x:Name="btnNext" Content="Next &gt;&gt;" HorizontalAlignment="Left" Margin="250,10,0,0" Grid.Row="3" VerticalAlignment="Top" Height="38" Width="90"                      />
         <Button x:ConnectionId='5' x:Name="btnLast" Content="Last &gt;|" HorizontalAlignment="Left" Margin="345,10,0,0" Grid.Row="3" VerticalAlignment="Top" Height="38" Width="90"                      />
         <Button x:ConnectionId='6' x:Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="722,10,0,0" Grid.Row="3" VerticalAlignment="Top" Height="38" Width="90"                       />
-        <Button x:Name="btnSearch" Content="Search..." HorizontalAlignment="Left" Margin="485,10,0,0" Grid.Row="3" VerticalAlignment="Top"/>
+        <Button x:ConnectionId='7' x:Name="btnSearch" Content="Search..." HorizontalAlignment="Left" Margin="485,10,0,0" Grid.Row="3" VerticalAlignment="Top"                       />
 
         <VisualStateManager.VisualStateGroups>
 

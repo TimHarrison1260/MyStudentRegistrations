@@ -5,5 +5,8 @@ Assets\StoreLogo.png
 App.xaml
 Common\StandardStyles.xaml
 MainPage.xaml
+SearchPage.xaml
+Settings\SettingsFlyout.xaml
+Settings\SettingsFlyoutProcessor.xaml
 StudentDisplayPage.xaml
 Common\ReadMe.txt

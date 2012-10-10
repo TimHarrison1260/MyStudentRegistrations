@@ -12,6 +12,9 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
+using Windows.UI.ApplicationSettings;
+using Windows.UI.Popups;
+
 using StudentRegistrationApp.BusinessEntities;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234237
@@ -27,9 +30,24 @@ namespace StudentRegistrationApp
         BusinessEntities.Student student;
         long currentStudentId = 0;
 
+
+
+
+        //  The container for the custom content
+        private Popup settingsPopup;
+        //  desired width for the settingsUI. UI guidelines specify this
+        //  shuld be 346 or 646 depending on needs
+        private double settingsWidth = 646;
+        //  used to determine the correct height to ensure our custon UI fills the screen
+        private Rect windowBounds;
+
+
+
         public MainPage()
         {
             this.InitializeComponent();
+            windowBounds = Window.Current.Bounds;
+            SettingsPane.GetForCurrentView().CommandsRequested += onCommandsRequested;
         }
 
         /// <summary>
@@ -229,6 +247,92 @@ namespace StudentRegistrationApp
             student.Contact.HomeEmail = this.txtEmailHomeInput.Text;
             student.Contact.StudentEmail = this.txtEmailStudentInput.Text;
         }
+
+        private void btnSearchClick(object sender, RoutedEventArgs e)
+        {
+            if (this.Frame != null)
+                this.Frame.Navigate(typeof(SearchPage));
+        }
+
+
+
+        /*
+         * Settings Charm related routines.
+         * This handler is registered in constructor for this page.
+         */
+
+        /// <summary>
+        /// Handler for the CommandsRequested of the application settings.
+        /// </summary>
+        void onCommandsRequested(SettingsPane settingsPane, SettingsPaneCommandsRequestedEventArgs eventArgs)
+        {
+            
+            //  Instantiate the handler that will process the command requested.
+            UICommandInvokedHandler handler = new UICommandInvokedHandler(onSettingsCommand);
+
+            //  Instantiate the command to handle the command and add it to the applicationcommands collection.
+            //  This one is for the general settings 
+            SettingsCommand generalCommand = new SettingsCommand("generalSettings", "General", handler);
+
+            var result = eventArgs.Request.ApplicationCommands.Count;
+            if (result == 0)
+                eventArgs.Request.ApplicationCommands.Add(generalCommand);
+
+            //  This one is for the help settings.
+            SettingsCommand helpCommand = new SettingsCommand("helpPage", "Help", handler);
+            eventArgs.Request.ApplicationCommands.Add(helpCommand);
+        }
+
+        void onSettingsCommand(IUICommand command)
+        {
+            SettingsCommand settingsCommand = (SettingsCommand)command;
+
+            //  Create a Popup window which will contain our flyout.
+            settingsPopup = new Popup();
+            settingsPopup.Closed += OnPopupClosed;
+            Window.Current.Activated += OnWindowActivated;
+            settingsPopup.IsLightDismissEnabled = true;
+            settingsPopup.Width = settingsWidth;
+            settingsPopup.Height = windowBounds.Height;
+            //settingsPopup.Height = Window.Current.Bounds.Height;
+
+            //  Add the proper animations for the flyout
+            settingsPopup.ChildTransitions = new Windows.UI.Xaml.Media.Animation.TransitionCollection();
+            settingsPopup.ChildTransitions.Add(new Windows.UI.Xaml.Media.Animation.PaneThemeTransition()
+            {
+                Edge = (SettingsPane.Edge == SettingsEdgeLocation.Right) ? EdgeTransitionLocation.Right : EdgeTransitionLocation.Left
+            });
+
+            //  Create a SettingsFlyout the same dimensions as the Popup.
+            Settings.SettingsFlyout mypane = new Settings.SettingsFlyout();
+            mypane.Width = settingsWidth;
+            mypane.Height = windowBounds.Height;
+            //mypane.Height = Window.Current.Bounds.Height;
+            //  Place the SettingsFlyout inside out Popup window.
+            settingsPopup.Child = mypane;
+
+            //  Define the location of our Popup
+            settingsPopup.SetValue(Canvas.LeftProperty, SettingsPane.Edge == SettingsEdgeLocation.Right ? (windowBounds.Width - settingsWidth) : 0);
+            settingsPopup.SetValue(Canvas.TopProperty, 0);
+            //  now, after all that stuff, open the Flyout
+            settingsPopup.IsOpen = true;
+        }
+
+
+
+        private void OnWindowActivated(object sender, Windows.UI.Core.WindowActivatedEventArgs e)
+        {
+            if (e.WindowActivationState == Windows.UI.Core.CoreWindowActivationState.Deactivated)
+            {
+                settingsPopup.IsOpen = false;
+            }
+        }
+
+        void OnPopupClosed(object sender, object e)
+        {
+            Window.Current.Activated -= OnWindowActivated;
+        } 
+
 
     }
 }

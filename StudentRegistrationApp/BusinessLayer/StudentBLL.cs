@@ -92,5 +92,20 @@ namespace StudentRegistrationApp.BusinessLayer
             return helper.ToBusinessEntity(_repository.PreviousStudent());
         }
 
+
+        public void LoadStudents()
+        {
+            _repository.LoadStudents();
+        }
+
+        public void PersistStudents()
+        {
+            _repository.PersistStudents();
+        }
+
+
+
+
+
     }
 }

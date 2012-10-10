@@ -14,6 +14,11 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
+using Windows.UI.Popups;        //  for the UICommand, required to manipulate the SettingsPane.
+using Windows.UI.ApplicationSettings;   //  For settings commands.
+
+using Windows.Storage;              // for the local storage stuff.
+
 // The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=234227
 
 namespace StudentRegistrationApp
@@ -24,6 +29,15 @@ namespace StudentRegistrationApp
     sealed partial class App : Application
     {
         private Model.IRepository Repository = new Model.StudentRepository();
+
+        ////  The container for the custom content
+        //private Popup settingsPopup;
+        ////  desired width for the settingsUI. UI guidelines specify this
+        ////  shuld be 346 or 646 depending on needs
+        //private double settingsWidth = 646;
+        ////  used to determine the correct height to ensure our custon UI fills the screen
+        //private Rect windowBounds;
+
 
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
@@ -38,7 +52,6 @@ namespace StudentRegistrationApp
             //  Here we would ultimately set up the 
             //  DI Container so that we can inject the instances.
             Model.IRepository Repository = new Model.StudentRepository();
-
         }
 
         /// <summary>
@@ -77,6 +90,11 @@ namespace StudentRegistrationApp
                     throw new Exception("Failed to create initial page");
                 }
             }
+
+            //  Call the loadstudents method.
+            BusinessLayer.IStudentBLL BLL = new BusinessLayer.StudentBLL((App.Current as App).GetRepository());
+            BLL.LoadStudents();
+
             // Ensure the current window is active
             Window.Current.Activate();
         }
@@ -92,10 +110,66 @@ namespace StudentRegistrationApp
         {
             var deferral = e.SuspendingOperation.GetDeferral();
             //TODO: Save application state and stop any background activity
+
+            //  Sae the student details before suspending.
+            BusinessLayer.IStudentBLL BLL = new BusinessLayer.StudentBLL((App.Current as App).GetRepository());
+            BLL.PersistStudents();
+            //RemoveFile();
+            //this.PersistStudents();
+
             deferral.Complete();
         }
 
+        /// <summary>
+        /// Leave this here, it would NEVER be used within an application like this.
+        /// </summary>
+        private async void RemoveFile()
+        {
+            //  Get the file
+            StorageFolder localFolder = ApplicationData.Current.LocalFolder;
+            StorageFile studentFile = await localFolder.GetFileAsync("student.txt");
+            await studentFile.DeleteAsync();
+        }
 
+
+
+        public async void PersistStudents()
+        {
+            try
+            {
+                //  Access variable for the local storage system, where we're going to store the Student records.
+                Windows.Storage.StorageFolder localFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
+                //  Get a reference to the file (assuming it's there).
+                StorageFile studentFile = await localFolder.GetFileAsync("student.txt");
+
+                //  Set up a StreamWriter to write stuff to it.
+                using (Stream outputStream = await studentFile.OpenStreamForWriteAsync())
+                {
+                    using (StreamWriter saveStream = new StreamWriter(outputStream))
+                    {
+                        //  Save each student in the array as a line in the file.
+                        saveStream.WriteLine("Hi this should be the first line in the file");
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                string msg = e.Message;
+            }
+        }
+
+
+
+
+
+        /****************************************************************************************
+         * My stuff added to act as IoC container, a singleton for each injected method / object.
+         * **************************************************************************************/
+
+        /// <summary>
+        /// Returns the instance of the Repository used by the DAL.
+        /// </summary>
+        /// <returns>Concrete instance of the repository (StudentRepository)</returns>
         public Model.IRepository GetRepository()
         {
             return Repository;

@@ -75,5 +75,10 @@ namespace StudentRegistrationApp.Model
         /// </summary>
         /// <returns></returns>
         Student PreviousStudent();
+
+        void LoadStudents();
+
+        void PersistStudents();
+
     }
 }

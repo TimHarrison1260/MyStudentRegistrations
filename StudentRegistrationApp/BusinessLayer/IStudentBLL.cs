@@ -21,5 +21,8 @@ namespace StudentRegistrationApp.BusinessLayer
         BusinessEntities.Student LastStudent();
         BusinessEntities.Student NextStudent();
         BusinessEntities.Student PreviousStudent();
+
+        void LoadStudents();
+        void PersistStudents();
     }
 }

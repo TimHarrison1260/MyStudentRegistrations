@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using System.IO;
+using Windows.Storage;
+
 namespace StudentRegistrationApp.Model
 {
     /// <summary>
@@ -194,5 +197,74 @@ namespace StudentRegistrationApp.Model
             currentItem--;
             return db[currentItem];
         }
+
+
+        public async void LoadStudents()
+        {
+            //  Access variable for the local storage system, where we're going to store the Student records.
+            Windows.Storage.StorageFolder localFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
+            //  Get the files available from the localFolder
+            Windows.Storage.Search.StorageFileQueryResult fileResults = localFolder.CreateFileQuery();
+            //  Get the list of files from the query against the localFolder
+            var fileList = await fileResults.GetFilesAsync();
+            //  Look for our file in the results.
+            Windows.Storage.StorageFile studentFile = fileList.SingleOrDefault(f => f.Name == "student.txt");
+            if (studentFile == null)
+            {
+                //  Create the file for students as the file doesn't exist
+                studentFile = await localFolder.CreateFileAsync("student.txt");
+
+                //  Leave the default students in the db as we've none in the file.
+            }
+            else
+            {
+                // file exists, so load the data from the file.
+                studentFile = await localFolder.GetFileAsync("student.txt");
+                //  Create a StreamReader to read the contents of the file.
+                using (System.IO.StreamReader readStream = new System.IO.StreamReader(await studentFile.OpenStreamForReadAsync()))
+                {
+                    //  We've got students in the file so clear the defaults out
+                    db.Clear();
+                    //  load each of the students into the db array.
+                    while (!readStream.EndOfStream)
+                    {
+                        string line = readStream.ReadLine();
+                        Student s = new Student();
+                        s.FromSerialisedStudent(line);
+                        db.Add(s);
+                    }
+                }
+            }
+        }
+
+        public async void PersistStudents()
+        {
+            try
+            {
+                //  Access variable for the local storage system, where we're going to store the Student records.
+                Windows.Storage.StorageFolder localFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
+                //  Get a reference to the file (assuming it's there).
+                StorageFile studentFile = await localFolder.GetFileAsync("student.txt");
+
+                //  Set up a StreamWriter to write stuff to it.
+                using (Stream outputStream = await studentFile.OpenStreamForWriteAsync())
+                {
+                    using (StreamWriter saveStream = new StreamWriter(outputStream))
+                    {
+                        //  Save each student in the array as a line in the file.
+                        foreach (Student s in db)
+                        {
+                            string line = s.ToSerialisedStudent();
+                            saveStream.WriteLine(line);
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                string msg = e.Message;
+            }
+        }
+
     }
 }

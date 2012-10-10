@@ -88,7 +88,7 @@
         <Button x:Name="btnNext" Content="Next &gt;&gt;" HorizontalAlignment="Left" Margin="250,10,0,0" Grid.Row="3" VerticalAlignment="Top" Height="38" Width="90" Click="btnNext_Click"/>
         <Button x:Name="btnLast" Content="Last &gt;|" HorizontalAlignment="Left" Margin="345,10,0,0" Grid.Row="3" VerticalAlignment="Top" Height="38" Width="90" Click="btnLast_Click"/>
         <Button x:Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="722,10,0,0" Grid.Row="3" VerticalAlignment="Top" Height="38" Width="90" Click="btnDeleteClick"/>
-        <Button x:Name="btnSearch" Content="Search..." HorizontalAlignment="Left" Margin="485,10,0,0" Grid.Row="3" VerticalAlignment="Top"/>
+        <Button x:Name="btnSearch" Content="Search..." HorizontalAlignment="Left" Margin="485,10,0,0" Grid.Row="3" VerticalAlignment="Top" Click="btnSearchClick"/>
 
         <VisualStateManager.VisualStateGroups>
 

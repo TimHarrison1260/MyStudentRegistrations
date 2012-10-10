@@ -118,7 +118,13 @@ namespace StudentRegistrationApp.StudentRegistrationApp_XamlTypeInfo
 
         private object Activate_2_MainPage() { return new global::StudentRegistrationApp.MainPage(); }
 
-        private object Activate_3_StudentDisplayPage() { return new global::StudentRegistrationApp.StudentDisplayPage(); }
+        private object Activate_3_SearchPage() { return new global::StudentRegistrationApp.SearchPage(); }
+
+        private object Activate_4_SettingsFlyout() { return new global::StudentRegistrationApp.Settings.SettingsFlyout(); }
+
+        private object Activate_5_SettingsFlyoutProcessor() { return new global::StudentRegistrationApp.Settings.SettingsFlyoutProcessor(); }
+
+        private object Activate_6_StudentDisplayPage() { return new global::StudentRegistrationApp.StudentDisplayPage(); }
 
 
         private global::Windows.UI.Xaml.Markup.IXamlType CreateXamlType(string typeName)
@@ -158,9 +164,27 @@ namespace StudentRegistrationApp.StudentRegistrationApp_XamlTypeInfo
                 xamlType = userType;
                 break;
 
+            case "StudentRegistrationApp.SearchPage":
+                userType = new global::StudentRegistrationApp.StudentRegistrationApp_XamlTypeInfo.XamlUserType(this, typeName, typeof(global::StudentRegistrationApp.SearchPage), GetXamlTypeByName("StudentRegistrationApp.Common.LayoutAwarePage"));
+                userType.Activator = Activate_3_SearchPage;
+                xamlType = userType;
+                break;
+
+            case "StudentRegistrationApp.Settings.SettingsFlyout":
+                userType = new global::StudentRegistrationApp.StudentRegistrationApp_XamlTypeInfo.XamlUserType(this, typeName, typeof(global::StudentRegistrationApp.Settings.SettingsFlyout), GetXamlTypeByName("StudentRegistrationApp.Common.LayoutAwarePage"));
+                userType.Activator = Activate_4_SettingsFlyout;
+                xamlType = userType;
+                break;
+
+            case "StudentRegistrationApp.Settings.SettingsFlyoutProcessor":
+                userType = new global::StudentRegistrationApp.StudentRegistrationApp_XamlTypeInfo.XamlUserType(this, typeName, typeof(global::StudentRegistrationApp.Settings.SettingsFlyoutProcessor), GetXamlTypeByName("StudentRegistrationApp.Common.LayoutAwarePage"));
+                userType.Activator = Activate_5_SettingsFlyoutProcessor;
+                xamlType = userType;
+                break;
+
             case "StudentRegistrationApp.StudentDisplayPage":
                 userType = new global::StudentRegistrationApp.StudentRegistrationApp_XamlTypeInfo.XamlUserType(this, typeName, typeof(global::StudentRegistrationApp.StudentDisplayPage), GetXamlTypeByName("StudentRegistrationApp.Common.LayoutAwarePage"));
-                userType.Activator = Activate_3_StudentDisplayPage;
+                userType.Activator = Activate_6_StudentDisplayPage;
                 xamlType = userType;
                 break;
 

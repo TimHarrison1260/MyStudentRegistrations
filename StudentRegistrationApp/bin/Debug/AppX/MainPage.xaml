@@ -37,7 +37,7 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button x:ConnectionId='3' x:Name="backButton"                IsEnabled="{Binding Frame.CanGoBack, ElementName=pageRoot}" Style="{StaticResource BackButtonStyle}"/>
+            <Button x:ConnectionId='4' x:Name="backButton"                IsEnabled="{Binding Frame.CanGoBack, ElementName=pageRoot}" Style="{StaticResource BackButtonStyle}"/>
             <TextBlock x:Name="pageTitle" Grid.Column="1" Style="{StaticResource PageHeaderTextStyle}" Text="Student Registration"/>
         </Grid>
         <Button x:ConnectionId='1' x:Name="RegisterStudent" Content="Register" HorizontalAlignment="Left" Margin="60,10,0,0" Grid.Row="3" VerticalAlignment="Top"                        Height="38" Width="88"/>
@@ -89,6 +89,7 @@
             </Grid>
         </StackPanel>
         <TextBlock x:Name="lblConfirmMsg" HorizontalAlignment="Left" Margin="546,19,0,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" Style="{StaticResource ConfirmMessageStyle}"/>
+        <Button x:ConnectionId='3' x:Name="btnSearch" Content="Search" HorizontalAlignment="Left" Margin="561,10,0,0" Grid.Row="3" VerticalAlignment="Top"                       />
 
         <VisualStateManager.VisualStateGroups>
 

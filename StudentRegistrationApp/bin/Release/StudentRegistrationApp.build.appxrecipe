@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>VIRTUALWIN8</Machine>
+    <WindowsUser>student</WindowsUser>
+    <SolutionConfiguration>Release|AnyCPU</SolutionConfiguration>
+    <PackageArchitecture>neutral</PackageArchitecture>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\bin\Release\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\bin\Release\StudentRegistrationApp.exe">
+      <PackagePath>StudentRegistrationApp.exe</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\bin\Release\StudentRegistrationApp.pdb">
+      <PackagePath>StudentRegistrationApp.pdb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\Assets\Logo.png">
+      <PackagePath>Assets\Logo.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\Assets\SmallLogo.png">
+      <PackagePath>Assets\SmallLogo.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\Assets\SplashScreen.png">
+      <PackagePath>Assets\SplashScreen.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\Assets\StoreLogo.png">
+      <PackagePath>Assets\StoreLogo.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\Common\ReadMe.txt">
+      <PackagePath>Common\ReadMe.txt</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\bin\Release\App.xaml">
+      <PackagePath>App.xaml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\bin\Release\Common\StandardStyles.xaml">
+      <PackagePath>Common\StandardStyles.xaml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\bin\Release\MainPage.xaml">
+      <PackagePath>MainPage.xaml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\bin\Release\SearchPage.xaml">
+      <PackagePath>SearchPage.xaml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\bin\Release\Settings\SettingsFlyout.xaml">
+      <PackagePath>Settings\SettingsFlyout.xaml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\bin\Release\Settings\SettingsFlyoutProcessor.xaml">
+      <PackagePath>Settings\SettingsFlyoutProcessor.xaml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\bin\Release\StudentDisplayPage.xaml">
+      <PackagePath>StudentDisplayPage.xaml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\bin\Release\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+</Project>

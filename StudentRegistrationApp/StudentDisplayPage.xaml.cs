@@ -171,5 +171,11 @@ namespace StudentRegistrationApp
             messageDialog.ShowAsync();
         }
 
+        private void btnSearchClick(object sender, RoutedEventArgs e)
+        {
+            if (this.Frame != null)
+                this.Frame.Navigate(typeof(SearchPage));
+        }
+
     }
 }

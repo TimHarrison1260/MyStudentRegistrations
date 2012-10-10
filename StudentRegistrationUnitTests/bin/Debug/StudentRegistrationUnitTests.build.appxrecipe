@@ -89,6 +89,15 @@
     <AppxPackagedFile Include="C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\bin\Debug\MainPage.xaml">
       <PackagePath>MainPage.xaml</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\bin\Debug\SearchPage.xaml">
+      <PackagePath>SearchPage.xaml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\bin\Debug\Settings\SettingsFlyout.xaml">
+      <PackagePath>Settings\SettingsFlyout.xaml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\bin\Debug\Settings\SettingsFlyoutProcessor.xaml">
+      <PackagePath>Settings\SettingsFlyoutProcessor.xaml</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\bin\Debug\StudentDisplayPage.xaml">
       <PackagePath>StudentDisplayPage.xaml</PackagePath>
     </AppxPackagedFile>

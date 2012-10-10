@@ -116,5 +116,65 @@ namespace StudentRegistrationApp.Model
                 this.Surname == other.Surname &&
                 this.DOB == other.DOB);
         }
+
+        /// <summary>
+        /// Temporary method as we'll replace it with serialization attribute later.
+        /// So here we'll just serialise the Contact and Address classes here too.
+        /// </summary>
+        /// <returns></returns>
+        public string ToSerialisedStudent()
+        {
+            string s = string.Format("{0}|{1}|{2}|{3}|{4}|{5}|{6}|{7}|{8}|{9}|{10}|{11}|{12}",
+                this._firstName, this._surname, this.Course, this.DOB.ToString(), this.YearOfStudy,
+                this.Address.Address1, this.Address.Town, this.Address.County, this.Address.PostCode,
+                this.Contact.HomePhone, this.Contact.MobilePhone, this.Contact.HomeEmail, this.Contact.StudentEmail
+                );
+            return s;
+        }
+
+        /// <summary>
+        /// Temporary method as we'll replace it with erialization attribute later.
+        /// </summary>
+        /// <param name="serialisedStudent"></param>
+        public void FromSerialisedStudent(string serialisedStudent)
+        {
+            if (serialisedStudent == null || serialisedStudent == string.Empty)
+            {
+                this._firstName = string.Empty;
+                this._surname = string.Empty;
+                this.Course = string.Empty;
+                this.YearOfStudy = YearOfStudyEnum.First;
+                this.Address = new Address();
+                this.Contact = new ContactDetail();
+            }
+            else
+            {
+                //  Separate out the string
+                char[] sep = { '|' };
+                string[] elements = serialisedStudent.Split(sep);
+                this.Firstname = elements[0];
+                this.Surname = elements[1];
+                this.Course = elements[2];
+                this.DOB = DateTime.Parse(elements[3]);
+                this.YearOfStudy = (YearOfStudyEnum)Enum.Parse(typeof(YearOfStudyEnum), elements[4]);
+
+                this.Address = new Address();
+                this.Address.Address1 = elements[5];
+                this.Address.Town = elements[6];
+                this.Address.County = elements[7];
+                this.Address.PostCode = elements[8];
+
+                this.Contact = new ContactDetail();
+                this.Contact.HomePhone = elements[9];
+                this.Contact.MobilePhone = elements[10];
+                this.Contact.HomeEmail = elements[11];
+                this.Contact.StudentEmail = elements[12];
+
+
+
+
+
+            }
+        }
     }
 }
