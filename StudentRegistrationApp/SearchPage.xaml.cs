@@ -24,6 +24,7 @@ namespace StudentRegistrationApp
 
         //  Instantiate the Business Layer to process the input.
         private readonly BusinessLayer.IStudentBLL BLL = new BusinessLayer.StudentBLL((App.Current as App).GetRepository());
+        private readonly BusinessLayer.ISearchBLL searchBLL = new BusinessLayer.SearchBLL((App.Current as App).GetSearchRepository());            
 
 
         public SearchPage()
@@ -48,6 +49,9 @@ namespace StudentRegistrationApp
                 this.cboCategories.Items.Add(i);
             }
 
+            //  load the searches combo box with the searches
+            this.cboSearches.ItemsSource = searchBLL.GetSearches();
+            this.cboSearches.DisplayMemberPath = "Title";
         }
 
         /// <summary>
@@ -84,7 +88,12 @@ namespace StudentRegistrationApp
 
         private void BtnSaveSearch_Click(object sender, RoutedEventArgs e)
         {
-
+            //  Generate a Title from the criteria and category
+            BusinessEntities.SearchCriteria search = new BusinessEntities.SearchCriteria();
+            search.Title = string.Format("Search for {0} in {1}", this.txtSearchValue.Text, this.cboCategories.SelectedValue.ToString());
+            search.searchString = this.txtSearchValue.Text;
+            search.category = (BusinessEntities.SearchCategoriesEnum)Enum.Parse(typeof(BusinessEntities.SearchCategoriesEnum), this.cboCategories.SelectedValue.ToString());
+            searchBLL.AddSearch(search);
         }
 
     }

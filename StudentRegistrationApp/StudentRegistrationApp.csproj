@@ -109,11 +109,14 @@
     <Compile Include="BusinessEntities\Address.cs" />
     <Compile Include="BusinessEntities\ContactDetail.cs" />
     <Compile Include="BusinessEntities\SearchCategories.cs" />
+    <Compile Include="BusinessEntities\SearchCriteria.cs" />
     <Compile Include="BusinessEntities\ValidationExceptions.cs" />
     <Compile Include="BusinessEntities\YearOfStudy.cs" />
     <Compile Include="BusinessLayer\Helpers.cs" />
+    <Compile Include="BusinessLayer\ISearchBLL.cs" />
     <Compile Include="BusinessLayer\IStudentBLL.cs" />
     <Compile Include="BusinessEntities\Student.cs" />
+    <Compile Include="BusinessLayer\SearchBLL.cs" />
     <Compile Include="BusinessLayer\StudentBLL.cs" />
     <Compile Include="Common\BindableBase.cs" />
     <Compile Include="Common\BooleanNegationConverter.cs" />
@@ -128,6 +131,9 @@
     <Compile Include="Model\Address.cs" />
     <Compile Include="Model\ContactDetail.cs" />
     <Compile Include="Model\IRepository.cs" />
+    <Compile Include="Model\ISearchRepository.cs" />
+    <Compile Include="Model\SearchCriteria.cs" />
+    <Compile Include="Model\SearchRepository.cs" />
     <Compile Include="Model\Student.cs" />
     <Compile Include="Model\StudentRepository.cs" />
     <Compile Include="Model\YearOfStudy.cs" />

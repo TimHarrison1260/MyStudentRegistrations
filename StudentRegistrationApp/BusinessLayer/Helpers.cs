@@ -75,5 +75,39 @@ namespace StudentRegistrationApp.BusinessLayer
 
             return modelStudent;
         }
+
+
+
+        /// <summary>
+        /// converts a model.SearchCriteria object to a BusinessEntity.SearchCriteria object 
+        /// </summary>
+        /// <param name="modelCriteria"></param>
+        /// <returns></returns>
+        public BusinessEntities.SearchCriteria ToBusinessEntitySearchCriteria(Model.SearchCriteria modelCriteria)
+        {
+            BusinessEntities.SearchCriteria BeSearchCriteria = new BusinessEntities.SearchCriteria();
+
+            BeSearchCriteria.Title = modelCriteria.Title;
+            BeSearchCriteria.searchString = modelCriteria.searchString;
+            BeSearchCriteria.category = modelCriteria.category;
+
+            return BeSearchCriteria;
+        }
+
+        /// <summary>
+        /// Converts a BisniessEntity.SearchCriteria object to a Model.SearchCriteria object.
+        /// </summary>
+        /// <param name="BeCriteria"></param>
+        /// <returns></returns>
+        public Model.SearchCriteria ToModelSearchCriteria(BusinessEntities.SearchCriteria BeCriteria)
+        {
+            Model.SearchCriteria modelCriteria = new Model.SearchCriteria();
+
+            modelCriteria.Title = BeCriteria.Title;
+            modelCriteria.searchString = BeCriteria.searchString;
+            modelCriteria.category = BeCriteria.category;
+
+            return modelCriteria;
+        }
     }
 }

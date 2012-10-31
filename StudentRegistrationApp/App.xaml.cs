@@ -29,6 +29,7 @@ namespace StudentRegistrationApp
     sealed partial class App : Application
     {
         private Model.IRepository Repository = new Model.StudentRepository();
+        private Model.ISearchRepository searchRepository = new Model.SearchRepository();
 
         ////  The container for the custom content
         //private Popup settingsPopup;
@@ -52,6 +53,7 @@ namespace StudentRegistrationApp
             //  Here we would ultimately set up the 
             //  DI Container so that we can inject the instances.
             Model.IRepository Repository = new Model.StudentRepository();
+            searchRepository = new Model.SearchRepository();
         }
 
         /// <summary>
@@ -117,6 +119,10 @@ namespace StudentRegistrationApp
             //RemoveFile();
             //this.PersistStudents();
 
+            //  Save the searches
+            BusinessLayer.ISearchBLL searchBll = new BusinessLayer.SearchBLL((App.Current as App).GetSearchRepository());
+            searchBll.SaveSearches();
+
             deferral.Complete();
         }
 
@@ -173,6 +179,11 @@ namespace StudentRegistrationApp
         public Model.IRepository GetRepository()
         {
             return Repository;
+        }
+
+        public Model.ISearchRepository GetSearchRepository()
+        {
+            return searchRepository;
         }
 
 
