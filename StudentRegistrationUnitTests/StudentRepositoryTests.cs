@@ -81,11 +81,11 @@ namespace StudentRegistrationUnitTests
             var db = new StudentRegistrationApp.Model.StudentRepository();
 
             //  Act:
-            var result = db.SearchStudents("Nancy");
+            var result = db.SearchStudents("Nancy", "Firstname");
 
             //  Assert:
             Assert.AreEqual(result.Count(), 1);
-            Assert.AreEqual(result[0].Firstname, "Nancy");
+            Assert.AreEqual(result[0].Firstname, "Nancy", "Firstname");
         }
 
         [TestMethod]
@@ -95,7 +95,7 @@ namespace StudentRegistrationUnitTests
             var db = new StudentRegistrationApp.Model.StudentRepository();
 
             //  Act:
-            var result = db.SearchStudents("Fred");
+            var result = db.SearchStudents("Fred", "Firstname");
 
             //  Assert: Nothing returned, Student Fred does not exist.
             Assert.AreEqual(result.Count(), 0);
@@ -118,7 +118,7 @@ namespace StudentRegistrationUnitTests
             db.UpdateStudent(student);
 
             //  Assert: Tim is now in Third Year of Study
-            var result = db.SearchStudents("Tim");
+            var result = db.SearchStudents("Tim", "Firstname");
 
             Assert.AreEqual(result.Count(), 1);
             Assert.AreEqual(result[0].YearOfStudy, StudentRegistrationApp.Model.YearOfStudyEnum.Third);
@@ -142,7 +142,7 @@ namespace StudentRegistrationUnitTests
             db.UpdateStudent(student);
 
             //  Assert: Tim is still at second year, as the update should've failed.
-            var result = db.SearchStudents("Tim");
+            var result = db.SearchStudents("Tim", "Firstname");
 
             Assert.AreEqual(result.Count(), 1);
             Assert.AreEqual(result[0].YearOfStudy, StudentRegistrationApp.Model.YearOfStudyEnum.Second);
@@ -191,7 +191,7 @@ namespace StudentRegistrationUnitTests
             //  Act
             db.DeleteStudent(studentNancy);
 
-            var result = db.SearchStudents("Nancy");
+            var result = db.SearchStudents("Nancy", "Firstname");
 
             //  Assert:
             Assert.AreEqual(result.Count(), 0);
@@ -211,7 +211,7 @@ namespace StudentRegistrationUnitTests
             //  Act:    Should not delete nancy as Surname doesn't match
             db.DeleteStudent(studentNancy);
             //  Still find record Nancy.
-            var result = db.SearchStudents("Nancy");
+            var result = db.SearchStudents("Nancy", "Firstname");
 
             //  Assert:     Still finds NAncy as it's not beed deleted.
             Assert.AreEqual(result.Count(), 1);

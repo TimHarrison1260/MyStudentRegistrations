@@ -108,6 +108,7 @@
     </Compile>
     <Compile Include="BusinessEntities\Address.cs" />
     <Compile Include="BusinessEntities\ContactDetail.cs" />
+    <Compile Include="BusinessEntities\SearchCategories.cs" />
     <Compile Include="BusinessEntities\ValidationExceptions.cs" />
     <Compile Include="BusinessEntities\YearOfStudy.cs" />
     <Compile Include="BusinessLayer\Helpers.cs" />

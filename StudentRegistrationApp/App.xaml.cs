@@ -133,30 +133,30 @@ namespace StudentRegistrationApp
 
 
 
-        public async void PersistStudents()
-        {
-            try
-            {
-                //  Access variable for the local storage system, where we're going to store the Student records.
-                Windows.Storage.StorageFolder localFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
-                //  Get a reference to the file (assuming it's there).
-                StorageFile studentFile = await localFolder.GetFileAsync("student.txt");
+        //public async void PersistStudents()
+        //{
+        //    try
+        //    {
+        //        //  Access variable for the local storage system, where we're going to store the Student records.
+        //        Windows.Storage.StorageFolder localFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
+        //        //  Get a reference to the file (assuming it's there).
+        //        StorageFile studentFile = await localFolder.GetFileAsync("student.txt");
 
-                //  Set up a StreamWriter to write stuff to it.
-                using (Stream outputStream = await studentFile.OpenStreamForWriteAsync())
-                {
-                    using (StreamWriter saveStream = new StreamWriter(outputStream))
-                    {
-                        //  Save each student in the array as a line in the file.
-                        saveStream.WriteLine("Hi this should be the first line in the file");
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                string msg = e.Message;
-            }
-        }
+        //        //  Set up a StreamWriter to write stuff to it.
+        //        using (Stream outputStream = await studentFile.OpenStreamForWriteAsync())
+        //        {
+        //            using (StreamWriter saveStream = new StreamWriter(outputStream))
+        //            {
+        //                //  Save each student in the array as a line in the file.
+        //                saveStream.WriteLine("Hi this should be the first line in the file");
+        //            }
+        //        }
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        string msg = e.Message;
+        //    }
+        //}
 
 
 

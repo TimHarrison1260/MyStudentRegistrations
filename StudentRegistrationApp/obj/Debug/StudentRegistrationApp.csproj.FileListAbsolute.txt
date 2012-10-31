@@ -63,7 +63,3 @@ C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\St
 C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\pri.resfiles
 C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\LanguageQualifiers.txt
 C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\ProjectArchitectures.txt
-C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\priconfig.xml.intermediate
-C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\layout.resfiles.intermediate
-C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\resources.resfiles.intermediate
-C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\pri.resfiles.intermediate

@@ -24,6 +24,9 @@ namespace StudentRegistrationApp.BusinessLayer
             _repository = repository;
         }
 
+        /*
+         * Read operations
+         */
         public List<BusinessEntities.Student> GetStudents()
         {
             List<BusinessEntities.Student> students = new List<BusinessEntities.Student>();
@@ -35,7 +38,36 @@ namespace StudentRegistrationApp.BusinessLayer
             return students;
         }
 
-        
+        public BusinessEntities.Student GetStudent(string Firstname, string Surname)
+        {
+            Helpers helper = new Helpers();
+            return helper.ToBusinessEntity(_repository.GetStudent(Firstname, Surname));
+        }
+
+        public BusinessEntities.Student GetStudentById(long id)
+        {
+            Helpers helper = new Helpers();
+            return helper.ToBusinessEntity(_repository.GetStudentById(id));
+        }
+
+
+        public List<BusinessEntities.Student> SearchStudents(string q, string category)
+        {
+            List<BusinessEntities.Student> students = new List<BusinessEntities.Student>();
+            Helpers helper = new Helpers();
+            foreach (var student in _repository.SearchStudents(q, category))
+            {
+                students.Add(helper.ToBusinessEntity(student));
+            }
+            return students;
+        }
+
+
+
+        /*  
+         *  C(R)UD Operations
+         */
+
         public void AddStudent(BusinessEntities.Student student)
         {
             Helpers helper = new Helpers();
@@ -56,18 +88,9 @@ namespace StudentRegistrationApp.BusinessLayer
         }
 
 
-        public BusinessEntities.Student GetStudent(string Firstname, string Surname)
-        {
-            Helpers helper = new Helpers();
-            return helper.ToBusinessEntity(_repository.GetStudent(Firstname, Surname));
-        }
-
-        public BusinessEntities.Student GetStudentById(long id)
-        {
-            Helpers helper = new Helpers();
-            return helper.ToBusinessEntity(_repository.GetStudentById(id));
-        }
-
+        /*
+         * Naviagtion operations
+         */
         public BusinessEntities.Student FirstStudent()
         {
             Helpers helper = new Helpers();
@@ -92,6 +115,9 @@ namespace StudentRegistrationApp.BusinessLayer
             return helper.ToBusinessEntity(_repository.PreviousStudent());
         }
 
+        /*
+         * Persistence operations
+         */
 
         public void LoadStudents()
         {

@@ -21,6 +21,11 @@ namespace StudentRegistrationApp
     /// </summary>
     public sealed partial class SearchPage : StudentRegistrationApp.Common.LayoutAwarePage
     {
+
+        //  Instantiate the Business Layer to process the input.
+        private readonly BusinessLayer.IStudentBLL BLL = new BusinessLayer.StudentBLL((App.Current as App).GetRepository());
+
+
         public SearchPage()
         {
             this.InitializeComponent();
@@ -37,6 +42,12 @@ namespace StudentRegistrationApp
         /// session.  This will be null the first time a page is visited.</param>
         protected override void LoadState(Object navigationParameter, Dictionary<String, Object> pageState)
         {
+            //  Load the combo box with the YearOfStudy enumeration, Names not Values.
+            foreach (var i in Enum.GetValues(typeof(BusinessEntities.SearchCategoriesEnum)).Cast<BusinessEntities.SearchCategoriesEnum>())
+            {
+                this.cboCategories.Items.Add(i);
+            }
+
         }
 
         /// <summary>
@@ -48,5 +59,33 @@ namespace StudentRegistrationApp
         protected override void SaveState(Dictionary<String, Object> pageState)
         {
         }
+
+        private void btnSearch_Click(object sender, RoutedEventArgs e)
+        {
+            //  get the search criteria
+            var searchString = this.txtSearchValue.Text;
+            var searchCategory = (this.cboCategories.Items.Count() > 0) ? this.cboCategories.SelectedValue.ToString() : string.Empty;
+
+            //  get the students matching the search criteria from the business model.
+            var students = BLL.SearchStudents(searchString, searchCategory);
+
+            //  Display the results on the search page
+            this.lstSearchResults.ItemsSource = students;
+        }
+
+        private void btnNewSearch_Click(object sender, RoutedEventArgs e)
+        {
+            //  Initialise the search Criteria (NOT including the Category or Previous Searches DropDown boxes
+            this.txtSearchValue.Text = string.Empty;
+            if (this.cboCategories.Items.Count() > 0)
+                this.cboCategories.SelectedValue = null;
+            this.lstSearchResults.ItemsSource = null;
+        }
+
+        private void BtnSaveSearch_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
     }
 }

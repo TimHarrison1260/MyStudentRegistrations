@@ -50,7 +50,7 @@ namespace StudentRegistrationApp.Model
         /// </summary>
         /// <param name="q">The search string</param>
         /// <returns>A list of matching student records.</returns>
-        List<Student> SearchStudents(string q);
+        List<Student> SearchStudents(string q, string category);
 
         /// <summary>
         /// Gets the first student in the List.

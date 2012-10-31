@@ -16,17 +16,17 @@
     <AppXManifest Include="C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\bin\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2012-10-10T10:39:19.904</Modified>
+      <Modified>2012-10-31T20:03:25.682</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\bin\Debug\StudentRegistrationApp.exe">
       <PackagePath>StudentRegistrationApp.exe</PackagePath>
-      <Modified>2012-10-10T11:00:59.475</Modified>
+      <Modified>2012-10-31T20:10:03.936</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\bin\Debug\StudentRegistrationApp.pdb">
       <PackagePath>StudentRegistrationApp.pdb</PackagePath>
-      <Modified>2012-10-10T11:00:59.441</Modified>
+      <Modified>2012-10-31T20:10:03.900</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\Assets\Logo.png">
       <PackagePath>Assets\Logo.png</PackagePath>
@@ -66,7 +66,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\bin\Debug\SearchPage.xaml">
       <PackagePath>SearchPage.xaml</PackagePath>
-      <Modified>2012-10-02T15:56:27.170</Modified>
+      <Modified>2012-10-31T20:10:02.242</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\bin\Debug\Settings\SettingsFlyout.xaml">
       <PackagePath>Settings\SettingsFlyout.xaml</PackagePath>
@@ -82,7 +82,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\bin\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2012-10-10T10:09:26.675</Modified>
+      <Modified>2012-10-31T20:03:25.609</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

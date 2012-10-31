@@ -20,6 +20,9 @@ namespace StudentRegistrationApp.Model
         //  Holds the index of the item currently displayed.
         private int currentItem = 0;
 
+        //  Hold a reference to the storage file used to persist the data.
+        private StorageFile studentFile = null;
+
         /// <summary>
         /// Provide constructor so we can initialise the list of
         /// Students to contain some values.
@@ -145,15 +148,36 @@ namespace StudentRegistrationApp.Model
         /// </summary>
         /// <param name="q">The search string</param>
         /// <returns>A list of matching student records.</returns>
-        public List<Student> SearchStudents(string q)
+        public List<Student> SearchStudents(string q, string category)
         {
-            //  Return entire db if query string is not defined
-            if (q==null || q=="") return db;
+            //  Return entire db if query string, regardless of the category
+            if (q == null || q == "") return db;
 
             //  Return matching student records.
-            var students = from s in db
-                           where s.Firstname.Contains(q) || s.Surname.Contains(q)
-                           select s;
+            //var students = from s in db
+            //               where s.Firstname.Contains(q) || s.Surname.Contains(q)
+            //               select s;
+
+            IEnumerable<Student> students = null;
+
+            BusinessEntities.SearchCategoriesEnum c = (BusinessEntities.SearchCategoriesEnum)Enum.Parse(typeof(BusinessEntities.SearchCategoriesEnum), category);
+            switch (c)
+            {
+                case BusinessEntities.SearchCategoriesEnum.Firstname:
+                    students = db.Where(s => s.Firstname.ToLower().Contains(q.ToLower()));
+                    break;
+                case BusinessEntities.SearchCategoriesEnum.Surname:
+                    students = db.Where(s => s.Surname.ToLower().Contains(q.ToLower()));
+                    break;
+                case BusinessEntities.SearchCategoriesEnum.Course:
+                    students = db.Where(s => s.Course.ToLower().Contains(q.ToLower()));
+                    break;
+                default:
+                    //  Only support the above, even though there are more categories defined.
+                    //  this is enough for the lab exercise.
+                    break;
+            }
+
             return students.ToList<Student>();
         }
 
@@ -208,7 +232,8 @@ namespace StudentRegistrationApp.Model
             //  Get the list of files from the query against the localFolder
             var fileList = await fileResults.GetFilesAsync();
             //  Look for our file in the results.
-            Windows.Storage.StorageFile studentFile = fileList.SingleOrDefault(f => f.Name == "student.txt");
+            studentFile = fileList.SingleOrDefault(f => f.Name == "student.txt");
+            
             if (studentFile == null)
             {
                 //  Create the file for students as the file doesn't exist
@@ -219,9 +244,9 @@ namespace StudentRegistrationApp.Model
             else
             {
                 // file exists, so load the data from the file.
-                studentFile = await localFolder.GetFileAsync("student.txt");
+                //studentFile = await localFolder.GetFileAsync("student.txt");
                 //  Create a StreamReader to read the contents of the file.
-                using (System.IO.StreamReader readStream = new System.IO.StreamReader(await studentFile.OpenStreamForReadAsync()))
+                using (StreamReader readStream = new StreamReader(await studentFile.OpenStreamForReadAsync()))
                 {
                     //  We've got students in the file so clear the defaults out
                     db.Clear();
@@ -241,30 +266,22 @@ namespace StudentRegistrationApp.Model
         {
             try
             {
-                //  Access variable for the local storage system, where we're going to store the Student records.
-                Windows.Storage.StorageFolder localFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
-                //  Get a reference to the file (assuming it's there).
-                StorageFile studentFile = await localFolder.GetFileAsync("student.txt");
-
+                Stream fileStream = await studentFile.OpenStreamForWriteAsync();
                 //  Set up a StreamWriter to write stuff to it.
-                using (Stream outputStream = await studentFile.OpenStreamForWriteAsync())
+                using (StreamWriter saveStream = new StreamWriter(fileStream))
                 {
-                    using (StreamWriter saveStream = new StreamWriter(outputStream))
+                    //  Save each student in the array as a line in the file.
+                    foreach (Student s in db)
                     {
-                        //  Save each student in the array as a line in the file.
-                        foreach (Student s in db)
-                        {
-                            string line = s.ToSerialisedStudent();
-                            saveStream.WriteLine(line);
-                        }
+                        string line = s.ToSerialisedStudent();
+                        saveStream.WriteLine(line);
                     }
-                }
+                }                
             }
             catch (Exception e)
             {
                 string msg = e.Message;
             }
         }
-
     }
 }
