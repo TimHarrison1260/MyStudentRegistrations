@@ -130,6 +130,7 @@
     </Compile>
     <Compile Include="Model\Address.cs" />
     <Compile Include="Model\ContactDetail.cs" />
+    <Compile Include="Model\Helpers.cs" />
     <Compile Include="Model\IRepository.cs" />
     <Compile Include="Model\ISearchRepository.cs" />
     <Compile Include="Model\SearchCriteria.cs" />

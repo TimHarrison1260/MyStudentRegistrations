@@ -16,17 +16,17 @@
     <AppXManifest Include="C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\bin\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2012-10-31T22:26:37.547</Modified>
+      <Modified>2012-11-06T23:05:15.415</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\bin\Debug\StudentRegistrationApp.exe">
       <PackagePath>StudentRegistrationApp.exe</PackagePath>
-      <Modified>2012-10-31T23:04:12.633</Modified>
+      <Modified>2012-11-06T23:05:15.257</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\bin\Debug\StudentRegistrationApp.pdb">
       <PackagePath>StudentRegistrationApp.pdb</PackagePath>
-      <Modified>2012-10-31T23:04:12.601</Modified>
+      <Modified>2012-11-06T23:05:15.223</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\Assets\Logo.png">
       <PackagePath>Assets\Logo.png</PackagePath>
@@ -82,7 +82,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\bin\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2012-10-31T22:26:37.474</Modified>
+      <Modified>2012-11-06T23:05:15.339</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

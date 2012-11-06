@@ -20,6 +20,7 @@ namespace StudentRegistrationApp.Model
 
         //  Hold a reference to the storage file used to persist the data.
         private StorageFile studentFile = null;
+        private const string studentFileName = "Student.txt";
 
         /// <summary>
         /// Provide constructor so we can initialise the list of
@@ -223,26 +224,17 @@ namespace StudentRegistrationApp.Model
 
         public async void LoadStudents()
         {
-            //  Access variable for the local storage system, where we're going to store the Student records.
-            Windows.Storage.StorageFolder localFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
-            //  Get the files available from the localFolder
-            Windows.Storage.Search.StorageFileQueryResult fileResults = localFolder.CreateFileQuery();
-            //  Get the list of files from the query against the localFolder
-            var fileList = await fileResults.GetFilesAsync();
-            //  Look for our file in the results.
-            studentFile = fileList.SingleOrDefault(f => f.Name == "student.txt");
-            
+            studentFile = await StudentRegistrationApp.Model.Helpers.GetFile(studentFileName);
+
             if (studentFile == null)
             {
                 //  Create the file for students as the file doesn't exist
-                studentFile = await localFolder.CreateFileAsync("student.txt");
+                studentFile = await StudentRegistrationApp.Model.Helpers.CreateFile(studentFileName);
 
                 //  Leave the default students in the db as we've none in the file.
             }
             else
             {
-                // file exists, so load the data from the file.
-                //studentFile = await localFolder.GetFileAsync("student.txt");
                 //  Create a StreamReader to read the contents of the file.
                 using (StreamReader readStream = new StreamReader(await studentFile.OpenStreamForReadAsync()))
                 {

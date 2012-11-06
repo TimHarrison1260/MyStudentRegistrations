@@ -42,22 +42,12 @@ namespace StudentRegistrationApp.Model
         {
             try
             {
-                //  Access variable for the local storage system, where we're going to store the Student records.
-                Windows.Storage.StorageFolder localFolder1 = Windows.Storage.ApplicationData.Current.LocalFolder;
-                //  Get the files available from the localFolder
-                Windows.Storage.Search.StorageFileQueryResult searchfileResults = localFolder1.CreateFileQuery();
-                //  Get the list of files from the query against the localFolder
-                IReadOnlyList<StorageFile> fileList1 = await searchfileResults.GetFilesAsync();
-                //  Look for our file in the results.
-                searchesFile = fileList1.SingleOrDefault(f => f.Name == searchesFileName);
-
-                var myfile = localFolder1.GetFileAsync(searchesFileName);
-
+                searchesFile = await StudentRegistrationApp.Model.Helpers.GetFile(searchesFileName);
 
                 if (searchesFile == null)
                 {
                     //  Create the file for students as the file doesn't exist
-                    searchesFile = await localFolder1.CreateFileAsync(searchesFileName);
+                    searchesFile = await StudentRegistrationApp.Model.Helpers.CreateFile(searchesFileName);
                 }
                 else
                 {
@@ -88,7 +78,7 @@ namespace StudentRegistrationApp.Model
             try
             {
                 //  only save the searches if some are defined.
-                if (db.Count != 0)
+                if ((db != null) && (db.Count != 0))
                 {
                     Stream fileStream = await searchesFile.OpenStreamForWriteAsync();
                     //  Set up a StreamWriter to write stuff to it.
