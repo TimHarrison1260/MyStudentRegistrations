@@ -11,5 +11,6 @@ namespace StudentRegistrationApp.BusinessLayer
         IList<BusinessEntities.SearchCriteria> GetSearches();
         void AddSearch(BusinessEntities.SearchCriteria search);
         void SaveSearches();
+        void LoadSearches();
     }
 }

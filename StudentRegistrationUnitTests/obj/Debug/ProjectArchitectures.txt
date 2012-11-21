@@ -1,2 +1,3 @@
+C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\Infrastructure\Infrastructure.csproj;neutral
 C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\StudentRegistrationApp.csproj;neutral
 C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationUnitTests\StudentRegistrationUnitTests.csproj;neutral

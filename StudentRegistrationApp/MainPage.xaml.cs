@@ -62,13 +62,13 @@ namespace StudentRegistrationApp
         protected override void LoadState(Object navigationParameter, Dictionary<String, Object> pageState)
         {
             //  Load the combo box with the YearOfStudy enumeration, Names not Values.
-            foreach (var i in Enum.GetValues(typeof(Model.YearOfStudyEnum)).Cast<Model.YearOfStudyEnum>())
-            {
-                this.cbYearOfStudyInput.Items.Add(i);
-            }
+            //foreach (var i in Enum.GetValues(typeof(Model.YearOfStudyEnum)).Cast<Model.YearOfStudyEnum>())
+            //{
+            //    this.cbYearOfStudyInput.Items.Add(i);
+            //}
 
-            //this.YearOfStudyInput.DataContext = Enum.GetValues(typeof( Model.YearOfStudyEnum)).Cast<Model.YearOfStudyEnum>();
-            //this.YearOfStudyInput.SelectedItem = Model.YearOfStudyEnum.First;
+            this.cbYearOfStudyInput.ItemsSource = Enum.GetValues(typeof( Model.YearOfStudyEnum)).Cast<Model.YearOfStudyEnum>();
+            this.cbYearOfStudyInput.SelectedItem = Model.YearOfStudyEnum.First;
         }
 
         /// <summary>
@@ -95,11 +95,16 @@ namespace StudentRegistrationApp
                 //  Get the student record
                 student = BLL.GetStudentById(parameterId);
             }
+            else
+            {
+                student = new BusinessEntities.Student();
+            }
 
             if (student != null)
             {
                 //  Set the form values to display the student record.
                 SetFormValues();
+
                 //  Set the button descriptions to Save and Cancel, make the Cancel button visible.
                 this.RegisterStudent.Content = "Save";
             }
@@ -177,40 +182,46 @@ namespace StudentRegistrationApp
         /// </remarks>
         private void ResetForm() 
         {
-            this.txtFirstNameInput.Text = string.Empty;
-            this.txtSurnameInput.Text = string.Empty;
-            this.txtDoBInput.Text = string.Empty;
-            this.txtCourseTitleInput.Text = string.Empty;
-            this.txtAddressInput.Text = string.Empty;
-            this.txtTownInput.Text = string.Empty;
-            this.txtCountyInput.Text = string.Empty;
-            this.txtPostCodeInput.Text = string.Empty;
+            student = new Student();
+            this.StudentEntry.DataContext = student;
 
-            this.cbYearOfStudyInput.SelectedIndex = 0;
-            this.txtPhoneHomeInput.Text = string.Empty;
-            this.txtPhoneMobileInput.Text = string.Empty;
-            this.txtEmailHomeInput.Text = string.Empty;
-            this.txtEmailStudentInput.Text = string.Empty;
+            //this.txtFirstNameInput.Text = string.Empty;
+            //this.txtSurnameInput.Text = string.Empty;
+            //this.txtDoBInput.Text = string.Empty;
+            //this.txtCourseTitleInput.Text = string.Empty;
+            //this.txtAddressInput.Text = string.Empty;
+            //this.txtTownInput.Text = string.Empty;
+            //this.txtCountyInput.Text = string.Empty;
+            //this.txtPostCodeInput.Text = string.Empty;
+
+            //this.cbYearOfStudyInput.SelectedIndex = 0;
+            //this.txtPhoneHomeInput.Text = string.Empty;
+            //this.txtPhoneMobileInput.Text = string.Empty;
+            //this.txtEmailHomeInput.Text = string.Empty;
+            //this.txtEmailStudentInput.Text = string.Empty;
 
             this.currentStudentId = 0;
         }
 
         private void SetFormValues()
         {
-            this.txtFirstNameInput.Text = student.Firstname;
-            this.txtSurnameInput.Text = student.Surname;
-            this.txtDoBInput.Text = student.DOB.ToString();
-            this.txtCourseTitleInput.Text = student.Course;
-            this.txtAddressInput.Text = student.Address.Address1;
-            this.txtTownInput.Text = student.Address.Town;
-            this.txtCountyInput.Text = student.Address.County;
-            this.txtPostCodeInput.Text = student.Address.PostCode;
+            //  Bind the student record to the form
+            this.StudentEntry.DataContext = student;
 
-            this.cbYearOfStudyInput.SelectedIndex = ((int)student.YearOfStudy - 1);
-            this.txtPhoneHomeInput.Text = student.Contact.HomePhone;
-            this.txtPhoneMobileInput.Text = student.Contact.MobilePhone;
-            this.txtEmailHomeInput.Text = student.Contact.HomeEmail;
-            this.txtEmailStudentInput.Text = student.Contact.StudentEmail;
+            //this.txtFirstNameInput.Text = student.Firstname;
+            //this.txtSurnameInput.Text = student.Surname;
+            //this.txtDoBInput.Text = student.DOB.ToString();
+            //this.txtCourseTitleInput.Text = student.Course;
+            //this.txtAddressInput.Text = student.Address.Address1;
+            //this.txtTownInput.Text = student.Address.Town;
+            //this.txtCountyInput.Text = student.Address.County;
+            //this.txtPostCodeInput.Text = student.Address.PostCode;
+
+            //this.cbYearOfStudyInput.SelectedIndex = ((int)student.YearOfStudy - 1);
+            //this.txtPhoneHomeInput.Text = student.Contact.HomePhone;
+            //this.txtPhoneMobileInput.Text = student.Contact.MobilePhone;
+            //this.txtEmailHomeInput.Text = student.Contact.HomeEmail;
+            //this.txtEmailStudentInput.Text = student.Contact.StudentEmail;
 
             this.currentStudentId = student.Id;
         }
@@ -220,32 +231,32 @@ namespace StudentRegistrationApp
         {
             //  create a new instance of a Student record if it's not already loaded
             //  ie. we're in Add new student mode and not edit student mode.
-            if (currentStudentId == 0) student = new Student();
-            //  load Student record from onscreen values
-            student.Firstname = this.txtFirstNameInput.Text;
-            student.Surname = this.txtSurnameInput.Text;
-            student.DOB = this.txtDoBInput.Text;
-            student.Course = this.txtCourseTitleInput.Text;
-            if (cbYearOfStudyInput.SelectedValue == null)
-            {
-                student.YearOfStudy = BusinessEntities.YearOfStudyEnum.First;
-            }
-            else
-            {
-                student.YearOfStudy = (BusinessEntities.YearOfStudyEnum)this.cbYearOfStudyInput.SelectedValue;
-            }
+            //if (currentStudentId == 0) student = new Student();
+            ////  load Student record from onscreen values
+            //student.Firstname = this.txtFirstNameInput.Text;
+            //student.Surname = this.txtSurnameInput.Text;
+            //student.DOB = this.txtDoBInput.Text;
+            //student.Course = this.txtCourseTitleInput.Text;
+            //if (cbYearOfStudyInput.SelectedValue == null)
+            //{
+            //    student.YearOfStudy = BusinessEntities.YearOfStudyEnum.First;
+            //}
+            //else
+            //{
+            //    student.YearOfStudy = (BusinessEntities.YearOfStudyEnum)this.cbYearOfStudyInput.SelectedValue;
+            //}
 
-            student.Address = new BusinessEntities.Address();
-            student.Address.Address1 = this.txtAddressInput.Text;
-            student.Address.Town = this.txtTownInput.Text;
-            student.Address.County = this.txtCountyInput.Text;
-            student.Address.PostCode = this.txtPostCodeInput.Text;
+            //student.Address = new BusinessEntities.Address();
+            //student.Address.Address1 = this.txtAddressInput.Text;
+            //student.Address.Town = this.txtTownInput.Text;
+            //student.Address.County = this.txtCountyInput.Text;
+            //student.Address.PostCode = this.txtPostCodeInput.Text;
 
-            student.Contact = new BusinessEntities.ContactDetail();
-            student.Contact.HomePhone = this.txtPhoneHomeInput.Text;
-            student.Contact.MobilePhone = this.txtPhoneMobileInput.Text;
-            student.Contact.HomeEmail = this.txtEmailHomeInput.Text;
-            student.Contact.StudentEmail = this.txtEmailStudentInput.Text;
+            //student.Contact = new BusinessEntities.ContactDetail();
+            //student.Contact.HomePhone = this.txtPhoneHomeInput.Text;
+            //student.Contact.MobilePhone = this.txtPhoneMobileInput.Text;
+            //student.Contact.HomeEmail = this.txtEmailHomeInput.Text;
+            //student.Contact.StudentEmail = this.txtEmailStudentInput.Text;
         }
 
         private void btnSearchClick(object sender, RoutedEventArgs e)

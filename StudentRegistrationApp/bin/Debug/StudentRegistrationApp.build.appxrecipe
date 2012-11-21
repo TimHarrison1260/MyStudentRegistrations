@@ -19,6 +19,12 @@
     <AppxPackagedFile Include="C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\bin\Debug\StudentRegistrationApp.pdb">
       <PackagePath>StudentRegistrationApp.pdb</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\Infrastructure\bin\Debug\Infrastructure.pdb">
+      <PackagePath>Infrastructure.pdb</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\Infrastructure\bin\Debug\Infrastructure.dll">
+      <PackagePath>Infrastructure.dll</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\Assets\Logo.png">
       <PackagePath>Assets\Logo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>

@@ -10,9 +10,9 @@ using Windows.Storage;
 
 namespace StudentRegistrationApp.Model
 {
-    public static class Helpers
+    public class Helpers
     {
-        public static async Task<StorageFile> GetFile(string filename)
+        public async Task<StorageFile> GetFile(string filename)
         {
             StorageFile file = null;
 
@@ -31,7 +31,7 @@ namespace StudentRegistrationApp.Model
             return file;
         }
 
-        public static async Task<StorageFile> CreateFile(string filename)
+        public async Task<StorageFile> CreateFile(string filename)
         {
             StorageFile file = null;
 

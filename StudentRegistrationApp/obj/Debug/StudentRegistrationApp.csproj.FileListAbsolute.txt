@@ -63,7 +63,8 @@ C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\St
 C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\pri.resfiles
 C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\LanguageQualifiers.txt
 C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\ProjectArchitectures.txt
-C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\priconfig.xml.intermediate
-C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\layout.resfiles.intermediate
-C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\resources.resfiles.intermediate
-C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\pri.resfiles.intermediate
+C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\bin\Debug\Infrastructure.dll
+C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\bin\Debug\Infrastructure.pdb
+C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\bin\Debug\Infrastructure.pri
+C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\StudentRegistrationApp.csprojResolveAssemblyReference.cache
+C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\obj\Debug\StudentRegistrationApp.csproj.GenerateResource.Cache

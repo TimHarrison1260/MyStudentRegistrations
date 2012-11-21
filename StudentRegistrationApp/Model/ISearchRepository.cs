@@ -11,5 +11,6 @@ namespace StudentRegistrationApp.Model
         IList<SearchCriteria> GetSearches();
         void AddSearch(SearchCriteria search);
         void SaveSearches();
+        void LoadDB();
     }
 }

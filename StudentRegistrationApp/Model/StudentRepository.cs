@@ -224,12 +224,15 @@ namespace StudentRegistrationApp.Model
 
         public async void LoadStudents()
         {
-            studentFile = await StudentRegistrationApp.Model.Helpers.GetFile(studentFileName);
+            StudentRegistrationApp.Model.Helpers helper = new Helpers();
+            studentFile = await helper.GetFile(studentFileName);
+//            studentFile = await StudentRegistrationApp.Model.Helpers.GetFile(studentFileName);
 
             if (studentFile == null)
             {
                 //  Create the file for students as the file doesn't exist
-                studentFile = await StudentRegistrationApp.Model.Helpers.CreateFile(studentFileName);
+                studentFile = await helper.CreateFile(studentFileName);
+//                studentFile = await StudentRegistrationApp.Model.Helpers.CreateFile(studentFileName);
 
                 //  Leave the default students in the db as we've none in the file.
             }

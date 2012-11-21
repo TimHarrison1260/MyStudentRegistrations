@@ -16,17 +16,25 @@
     <AppXManifest Include="C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\bin\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2012-11-06T23:05:15.415</Modified>
+      <Modified>2012-11-21T10:12:27.253</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\bin\Debug\StudentRegistrationApp.exe">
       <PackagePath>StudentRegistrationApp.exe</PackagePath>
-      <Modified>2012-11-06T23:05:15.257</Modified>
+      <Modified>2012-11-21T10:47:49.096</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\bin\Debug\StudentRegistrationApp.pdb">
       <PackagePath>StudentRegistrationApp.pdb</PackagePath>
-      <Modified>2012-11-06T23:05:15.223</Modified>
+      <Modified>2012-11-21T10:47:49.072</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\Infrastructure\bin\Debug\Infrastructure.pdb">
+      <PackagePath>Infrastructure.pdb</PackagePath>
+      <Modified>2012-11-21T10:12:25.714</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\Infrastructure\bin\Debug\Infrastructure.dll">
+      <PackagePath>Infrastructure.dll</PackagePath>
+      <Modified>2012-11-21T10:12:25.734</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\Assets\Logo.png">
       <PackagePath>Assets\Logo.png</PackagePath>
@@ -62,7 +70,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\bin\Debug\MainPage.xaml">
       <PackagePath>MainPage.xaml</PackagePath>
-      <Modified>2012-10-02T15:12:32.976</Modified>
+      <Modified>2012-11-14T16:33:48.420</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\bin\Debug\SearchPage.xaml">
       <PackagePath>SearchPage.xaml</PackagePath>
@@ -78,11 +86,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\bin\Debug\StudentDisplayPage.xaml">
       <PackagePath>StudentDisplayPage.xaml</PackagePath>
-      <Modified>2012-10-02T15:08:37.282</Modified>
+      <Modified>2012-11-14T15:13:56.715</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationApp\bin\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2012-11-06T23:05:15.339</Modified>
+      <Modified>2012-11-21T10:12:27.194</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

@@ -38,5 +38,12 @@ namespace StudentRegistrationApp.BusinessLayer
         {
             _repository.SaveSearches();
         }
+
+        public void LoadSearches()
+        {
+            _repository.LoadDB();
+        }
+        
+
     }
 }

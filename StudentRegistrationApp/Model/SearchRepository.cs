@@ -38,31 +38,42 @@ namespace StudentRegistrationApp.Model
         }
 
 
-        private async void LoadDB()
+        public async void LoadDB()
         {
             try
             {
-                searchesFile = await StudentRegistrationApp.Model.Helpers.GetFile(searchesFileName);
+                StudentRegistrationApp.Model.Helpers helper = new Helpers();
+                searchesFile = await helper.GetFile(searchesFileName);
+//                searchesFile = await StudentRegistrationApp.Model.Helpers.GetFile(searchesFileName);
 
                 if (searchesFile == null)
                 {
                     //  Create the file for students as the file doesn't exist
-                    searchesFile = await StudentRegistrationApp.Model.Helpers.CreateFile(searchesFileName);
+                    searchesFile = await helper.CreateFile(searchesFileName);
+//                    searchesFile = await StudentRegistrationApp.Model.Helpers.CreateFile(searchesFileName);
+                    //  Initialise the DB
+                    db = new List<SearchCriteria>();
                 }
                 else
                 {
                     // file exists, so load the data from the file.
 
                     //  initialise the db.
-                    db.Clear();
+                    db = new List<SearchCriteria>();
+
+
                     //  Create a StreamReader to read the contents of the file.
                     using (StreamReader readStream = new StreamReader(await searchesFile.OpenStreamForReadAsync()))
                     {
-                        //  Set up the types for deserialising
-                        Type[] extraTypes = new Type[1];
-                        extraTypes[0] = typeof(SearchCriteria);
-                        XmlSerializer serializer = new XmlSerializer(typeof(IList<SearchCriteria>), extraTypes);
-                        db = (IList<SearchCriteria>)serializer.Deserialize(readStream);
+                        //  Stream cannot be empty, causes exception if we deserialise empty stream.
+                        if (!readStream.EndOfStream)            
+                        {
+                            //  Set up the types for deserialising
+                            Type[] extraTypes = new Type[1];
+                            extraTypes[0] = typeof(SearchCriteria);
+                            XmlSerializer serializer = new XmlSerializer(typeof(List<SearchCriteria>), extraTypes);
+                            db = (List<SearchCriteria>)serializer.Deserialize(readStream);
+                        }
                     }
                 }
             }
@@ -84,7 +95,7 @@ namespace StudentRegistrationApp.Model
                     //  Set up a StreamWriter to write stuff to it.
                     using (StreamWriter saveStream = new StreamWriter(fileStream))
                     {
-                        XmlSerializer serializer = new XmlSerializer(typeof(IList<SearchCriteria>));
+                        XmlSerializer serializer = new XmlSerializer(typeof(List<SearchCriteria>));
                         serializer.Serialize(saveStream, db);
                     }
                 }

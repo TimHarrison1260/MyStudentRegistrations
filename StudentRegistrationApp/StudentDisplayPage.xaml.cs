@@ -42,10 +42,13 @@ namespace StudentRegistrationApp
         protected override void LoadState(Object navigationParameter, Dictionary<String, Object> pageState)
         {
             //  Load the combo box with the YearOfStudy enumeration, Names not Values.
-            foreach (var i in Enum.GetValues(typeof(Model.YearOfStudyEnum)).Cast<Model.YearOfStudyEnum>())
-            {
-                this.cbYearOfStudy.Items.Add(i);
-            }
+            //foreach (var i in Enum.GetValues(typeof(Model.YearOfStudyEnum)).Cast<Model.YearOfStudyEnum>())
+            //{
+            //    this.cbYearOfStudy.Items.Add(i);
+            //}
+
+            this.cbYearOfStudy.ItemsSource = Enum.GetValues(typeof(Model.YearOfStudyEnum)).Cast<Model.YearOfStudyEnum>();
+
         }
 
         /// <summary>
@@ -71,7 +74,7 @@ namespace StudentRegistrationApp
 
             BusinessEntities.Student student = (BusinessEntities.Student)e.Parameter;
 
-            if (student != null)
+            if (student != null && student.Id != 0)
             {
                 //  We do this here, not because we have the full student record we need, but because
                 //  eventually we'll be passing an Id instead of the student itself, so the logic is 
@@ -122,25 +125,28 @@ namespace StudentRegistrationApp
         private void RefreshUI(BusinessEntities.Student student)
         {
 
+            //  Bind he form to the student record
+            this.StudentEntry.DataContext = student;
+
             //  Preserve Id of current Item being displayed
             currentDisplayId = student.Id;
 
             //  refresh the UI components with the student data.
-            this.txtFirstName.Text = student.Firstname;
-            this.txtSurname.Text = student.Surname;
-            this.txtDoB.Text = student.DOB.ToString();
-            this.cbYearOfStudy.SelectedIndex = ((int)student.YearOfStudy - 1);
-            this.txtCourseTitle.Text = student.Course;
+            //this.txtFirstName.Text = student.Firstname;
+            //this.txtSurname.Text = student.Surname;
+            //this.txtDoB.Text = student.DOB.ToString();
+            //this.cbYearOfStudy.SelectedIndex = ((int)student.YearOfStudy - 1);
+            //this.txtCourseTitle.Text = student.Course;
 
-            this.txtAddress.Text = student.Address.Address1;
-            this.txtTown.Text = student.Address.Town;
-            this.txtCounty.Text = student.Address.County;
-            this.txtPostCode.Text = student.Address.PostCode;
+            //this.txtAddress.Text = student.Address.Address1;
+            //this.txtTown.Text = student.Address.Town;
+            //this.txtCounty.Text = student.Address.County;
+            //this.txtPostCode.Text = student.Address.PostCode;
 
-            this.txtPhoneHome.Text = student.Contact.HomePhone;
-            this.txtPhoneMobile.Text = student.Contact.MobilePhone;
-            this.txtEmailHome.Text = student.Contact.HomeEmail;
-            this.txtEmailStudent.Text = student.Contact.StudentEmail;
+            //this.txtPhoneHome.Text = student.Contact.HomePhone;
+            //this.txtPhoneMobile.Text = student.Contact.MobilePhone;
+            //this.txtEmailHome.Text = student.Contact.HomeEmail;
+            //this.txtEmailStudent.Text = student.Contact.StudentEmail;
         }
 
         private void Edit_Click(object sender, RoutedEventArgs e)

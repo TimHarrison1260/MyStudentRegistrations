@@ -58,3 +58,6 @@ C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\St
 C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationUnitTests\obj\Debug\pri.resfiles
 C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationUnitTests\obj\Debug\LanguageQualifiers.txt
 C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationUnitTests\obj\Debug\ProjectArchitectures.txt
+C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationUnitTests\bin\Debug\Infrastructure.dll
+C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationUnitTests\bin\Debug\Infrastructure.pdb
+C:\Users\student\documents\visual studio 2012\Projects\StudentRegistrationApp\StudentRegistrationUnitTests\bin\Debug\Infrastructure.pri

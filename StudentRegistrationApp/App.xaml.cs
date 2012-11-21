@@ -19,6 +19,9 @@ using Windows.UI.ApplicationSettings;   //  For settings commands.
 
 using Windows.Storage;              // for the local storage stuff.
 
+using Infrastructure;
+
+
 // The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=234227
 
 namespace StudentRegistrationApp
@@ -54,6 +57,8 @@ namespace StudentRegistrationApp
             //  DI Container so that we can inject the instances.
             Model.IRepository Repository = new Model.StudentRepository();
             searchRepository = new Model.SearchRepository();
+
+            CheckFolders();
         }
 
         /// <summary>
@@ -96,6 +101,8 @@ namespace StudentRegistrationApp
             //  Call the loadstudents method.
             BusinessLayer.IStudentBLL BLL = new BusinessLayer.StudentBLL((App.Current as App).GetRepository());
             BLL.LoadStudents();
+            BusinessLayer.ISearchBLL searchBll = new BusinessLayer.SearchBLL((App.Current as App).GetSearchRepository());
+            searchBll.LoadSearches();
 
             // Ensure the current window is active
             Window.Current.Activate();
@@ -185,6 +192,41 @@ namespace StudentRegistrationApp
         {
             return searchRepository;
         }
+
+
+
+        private async void CheckFolders()
+        {
+            /*
+             * *    The dataRepository class is in a referenced project
+             * *    and the values returned apply only to this project
+             * *    as the owning, or executing, project.
+             * *
+             * *
+             */
+
+            string installFolder = DataRepository.GetInstallPath();
+            IList<string> installFolderFileNames = await DataRepository.GetFileNames(null);
+
+            string assetsFolder = await DataRepository.GetPath("Assets");                               //  OK
+            string dataFolderInINfrastructureProject = await DataRepository.GetPath("DataFolder");      //  Throws exception
+            IList<string> assetFolderFileNames = await DataRepository.GetFileNames("Assets");
+
+            string helpersFolder = await DataRepository.GetPath("Helpers");                             //  Throws exception
+            IList<string> helperFolderFileNames = await DataRepository.GetFileNames("Helpers");
+
+            string commonFolder = await DataRepository.GetPath("Common");                               //  OK
+            IList<string> commonFolderFileNames = await DataRepository.GetFileNames("Common");
+
+            string modelFolder = await DataRepository.GetPath("Model");                                 //  Throws exception
+            IList<string> modelFolderFileNames = await DataRepository.GetFileNames("Model");
+
+            string settingsFolder = await DataRepository.GetPath("Settings");                           //  OK
+            IList<string> settingsFolderFileNames = await DataRepository.GetFileNames("Settings");
+
+        }
+
+
 
 
     }
